@@ -1,7 +1,7 @@
 /**
  * file: karbytes_social_media_posts.txt
  * type: plain-text
- * date: 26_JULY_2024
+ * date: 27_JULY_2024
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -49,3 +49,14 @@ video_title: "QBism: The New Theory That Shatters Our View of Reality"
 video_date: 05_JULY_2024
 
 video_link: https://www.youtube.com/watch?v=yABPvDJ6Zgs
+
+
+* * *
+
+On 27_JULY_2024 at approximately 2:30AM Pacific Standard Time, karbytes shared the following video as a social media post on karbytes' Twitter dot Com page and on karbytes' Minds dot Com page:
+
+video_title: "Dark Dimensions: NEW THEORY Unifying Dark Matter & Dark Energy"
+
+video_date: 19_JULY_2024
+
+video_link: https://www.youtube.com/watch?v=kUHOoMX4Bqw
