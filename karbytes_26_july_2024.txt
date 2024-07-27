@@ -18,6 +18,8 @@ Summarize the following article: https://singularityhub.com/2024/07/25/this-is-w
 
 ChatGPT
 
+[Searched 1 site]
+
 The article explores the potential consequences of allowing AI-generated content to dominate the internet. It highlights the risk of "model collapse," where AI trained on its own output produces increasingly incoherent and nonsensical content. This issue arises from generative AI learning patterns from a vast amount of data, but as it trains on its own output, the quality degrades. The phenomenon is compared to genetic inbreeding, resulting in repetitive and inaccurate information. Solutions proposed include watermarking AI content and incorporating more human-generated data in training models.
 
 For more details, visit the original article.
@@ -43,6 +45,8 @@ karbytes
 Summarize the following article: https://phys.org/news/2024-07-propagating-entanglement-button.html
 
 ChatGPT
+
+[Searched 1 site]
 
 The article discusses a breakthrough by scientists at the Max Planck Institute of Quantum Optics in reliably creating entanglement between stationary and flying qubits using a setup with rubidium atoms and photons. This method involves using optical tweezers to control the atoms and mirrors to enhance photon interaction. The technique achieves near 100% efficiency and could significantly advance quantum networks and computing by enabling robust long-distance quantum communication and scalable quantum computing systems.
 
@@ -128,13 +132,13 @@ Even this looks a bit "filibuster" to me.
 
 If that (or this) is a "filibuster", then what is not a "filibuster"?
 
-What is not a "filibuster" is what is classified as being "not a waste of time, energy, and attention". 
+What is not a "filibuster" is what is classified as being "not a waste of time, energy, and attention".
 
-An example of a "non-filibuster" is creating, publishing, and archiving a digitized piece of intellectual property which the author of that piece is genuinely satisfied by bringing into existence and preserving. 
+An example of a "non-filibuster" is creating, publishing, and archiving a digitized piece of intellectual property which the author of that piece is genuinely satisfied by bringing into existence and preserving.
 
 An example of a "filibuster" is spending one's time in jail merely sleeping instead of reading books and doing yoga.
 
-Do any people wish your life was filled with more "filibusters" and fewer "non filibusters" than what it either has genetally been during the past six months or what you prefer it to be? 
+Do any people wish your life was filled with more "filibusters" and fewer "non filibusters" than what it either has genetally been during the past six months or what you prefer it to be?
 
 I think the probability that at least one person throughout all time wants my life to be filled with more "filibusters" and fewer "non filibusters" than what it either has genetally been during the past six months or what I prefer it to be is greater than zero (but not by a significant enough factor for such a notion to cause me crippling anger, anxiety, or depression).
 
@@ -144,9 +148,9 @@ My answer to that question is the same answer I provided to your previous questi
 
 What would you do if that probability increased to a degree you find to be significant enough to cause you crippling anger, anxiety, or depression?
 
-I would first attempt to relocate to an environment I feel that I have a sufficiently high enough chance of thriving in (or at least surviving in without having to resort to committing violence against myself or other people). 
+I would first attempt to relocate to an environment I feel that I have a sufficiently high enough chance of thriving in (or at least surviving in without having to resort to committing violence against myself or other people).
 
-If that attempt fails sufficiently many times or I feel that such attempts are nor likely to be successful, then I presume that I would resort to committing suicide, homicide, or both (though I prefer to save my own life at the expense of any other life).
+If that attempt fails sufficiently many times or I feel that such attempts are not likely to be successful, then I presume that I would resort to committing suicide, homicide, or both (though I prefer to save my own life at the expense of any other life).
 
 If I am unable to exert enough agency to do those things I described in the previous two paragraphs, then I suppose I will act defeated and very depressed, angry, and full of dread about every waking moment and while experiencing a profound lack of control over my own life and physiological and mental state. Such an existence would be so lacking in satisfaction for me (especially in pertinence to autonomous goal-setting, goal-oriented decision-making (and resulting behaviors), and continuous learning within the context of such goal-setting and attempts at goal-acquisition) that I would likely honestly call my life at that point in time an extended "filibuster" (i.e. an experience not worth experiencing due to that experience being profoundly unsatisfying to experience).
 
