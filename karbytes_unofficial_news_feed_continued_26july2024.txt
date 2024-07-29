@@ -1,7 +1,7 @@
 /**
  * file: karbytes_unofficial_news_feed_continued_26july2024.txt
  * type: plain-text
- * date: 27_JULY_2024
+ * date: 28_JULY_2024
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -63,3 +63,10 @@ https://fortune.com/2024/07/26/newsom-homeless-encampments-silicon-valley-billio
 @~2:00PM Pacific Standard Time on 27_JULY_2024
 
 https://www.dexerto.com/tech/elon-musk-drops-lawsuit-against-chatgpt-creator-openai-2773798/
+
+* * *
+
+@~6:30PM Pacific Standard Time on 28_JULY_2024
+
+https://www.forbes.com/sites/jackkelly/2024/07/26/california-20-minimum-wage-fast-food-impact/
+
