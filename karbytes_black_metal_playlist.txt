@@ -1,0 +1,41 @@
+/**
+ * file: karbytes_black_metal_playlist.txt
+ * type: plain-text
+ * date: 28_JULY_2024
+ * author: karbytes
+ * license: PUBLIC_DOMAIN
+ */
+
+The following Uniform Resource Locators are each the web address of exactly one unique MP4 video file in karbytes' GitHub repositories (and encompassing collection of public domain and web based digital files referred to by karbytes as karbytes). What each of the following MP4 video files have in common is that they each depict exactly one unique song whose musical genre is black metal. 
+
+* * *
+
+song_0: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/f%C3%B6r_dem_mitt_blod_setherial_released_1996_downloaded_by_karbytes_on_28july2024.mp4
+
+* * *
+
+song_1: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/chronicles_of_thy_astral_blood_satanic_warmaster_released_2018_downloaded_by_karbytes_on_28july2024.mp4
+
+* * *
+
+song_2: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_17/main/am_i_god_calben_2022_downloaded_by_karbytes_on_26june2024.mp4
+
+* * *
+
+song_3: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_17/main/enthroned_ha_shaitan_1997_downloaded_by_karbytes_26june2024.mp4
+
+* * *
+
+song_4: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_16/main/cauldron_of_plagues_kvaen_the_great_below_downloaded_by_karbytes_26may2024.mp4
+
+* * *
+
+song_5: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_16/main/blackbraid_barefoot_ghost_dance_on_blood_soaked_soil_(2022)_downloaded_by_karbytes_16june2024.mp4
+
+* * *
+
+song_6: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_15/main/mare_cognitum_antaresian_downloaded_by_karbytes_27may2024.mp4
+
+* * *
+
+song_7: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_10/main/eagle_of_the_serpent_sun_from_winds_of_serpentine_ascension_by_into_oblivion_downloaded_by_karbytes_on_11april2024.mp4
