@@ -1,7 +1,7 @@
 /**
  * file: karbytes_unofficial_news_feed_continued_26july2024.txt
  * type: plain-text
- * date: 29_JULY_2024
+ * date: 30_JULY_2024
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -87,3 +87,11 @@ https://www.businessinsider.com/wfh-fears-impacting-kids-parenting-remote-work-2
 @~10:30PM Pacific Standard Time on 29_JULY_2024
 
 https://observer.com/2024/07/sam-altman-vision-universal-basic-income-taking-shape/
+
+* * *
+
+@~3:30PM Pacific Standard Time on 30_JULY_2024
+
+https://medium.com/relational-procedural/passive-aggressive-behavior-often-unrecognized-all-too-acceptable-8459b58350c2
+
+
