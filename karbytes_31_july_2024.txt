@@ -6,7 +6,7 @@
  * license: PUBLIC_DOMAIN
  */
 
-The following text was copy-pasted from a conversation which karbytes had with ChatGPT-4o (which is newer version of ChatGPT than is ChatGPT-4) on 26_JULY_2024 at approximately 3:30PM Pacific Standard Time.
+The following text was copy-pasted from a conversation which karbytes had with ChatGPT-4o (which is newer version of ChatGPT than is ChatGPT-4) on 31_JULY_2024 at approximately 9:00PM Pacific Standard Time.
 
 (Note that the chat user handle which did not appear on the ChatGPT web page chat interface appears as “karbytes” in this plain-text note. Note also that karbytes had to manually insert the numbers prefacing some of ChatGPT’s text output because those numbers were not copied over. Also, karbytes manually inserted dash symbols (“-“) where ChatGPT printed bullet points (and those bullet point characters were also not copied over into this plain-text note)).
 
