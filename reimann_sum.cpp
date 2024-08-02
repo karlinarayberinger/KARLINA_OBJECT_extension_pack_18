@@ -46,16 +46,16 @@ int main() {
     std::cout << "\nStart Of Program";
     std::cout << "\n--------------------------------";
 
+    // Print an opening message to the file output stream.
+    file << "--------------------------------";
+    file << "\nStart Of Program";
+    file << "\n--------------------------------";
+
     /**
      * Prompt the user to select one of multiple single-variable functions from a list.
      * Store the selected function in a Function type variable named func.
      */
     Function func = selectFunctionFromListOfFunctions(file);
-
-    // Print an opening message to the file output stream.
-    file << "--------------------------------";
-    file << "\nStart Of Program";
-    file << "\n--------------------------------";
 
     /****/
 

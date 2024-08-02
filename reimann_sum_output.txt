@@ -1,4 +1,6 @@
-
+--------------------------------
+Start Of Program
+--------------------------------
 
 Enter the number which corresponds with one of the following functions:
 
@@ -14,13 +16,9 @@ Enter the number which corresponds with one of the following functions:
 
 4 --> f(x) = 2x + 3
 
-The value which was entered for option is 6.
+The value which was entered for option is 4.
 
-option was set to 0 by default due to the fact that the value input by the user was not recognized.
-
-The single-variable function which was selected from the list of such functions is f(x) = x^2.--------------------------------
-Start Of Program
---------------------------------
+The single-variable function which was selected from the list of such functions is f(x) = sqrt(x).
 
 --------------------------------
 End Of Program
