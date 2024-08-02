@@ -17,7 +17,7 @@ using Function = std::function<double(double)>;
 
 /** function prototypes */
 double computeRiemannSum(Function func, double a, double b, int n, const std::string& method);
-Function selectFunctionFromListOfFunctions();
+Function selectFunctionFromListOfFunctions(std::ofstream & file);
 
 /** program entry point */
 int main() {
@@ -45,6 +45,12 @@ int main() {
     std::cout << "\n\n--------------------------------";
     std::cout << "\nStart Of Program";
     std::cout << "\n--------------------------------";
+
+    /**
+     * Prompt the user to select one of multiple single-variable functions from a list.
+     * Store the selected function in a Function type variable named func.
+     */
+    Function func = selectFunctionFromListOfFunctions(file);
 
     // Print an opening message to the file output stream.
     file << "--------------------------------";
@@ -177,7 +183,7 @@ double computeRiemannSum(Function func, double a, double b, int n, const std::st
 }
 
 //...
-Function selectFunctionFromListOfFunctions()
+Function selectFunctionFromListOfFunctions(std::ofstream & file)
 {
     // example function: f(x) = x^2
     Function func_0 = [](double x) { return x * x; };
@@ -194,22 +200,93 @@ Function selectFunctionFromListOfFunctions()
     // example function: f(x) = sqrt(x)
     Function func_4 = [](double x) { return sqrt(x); };
 
+    // example function: f(x) = 2x + 3
+    Function func_5 = [](double x) { return 2 * x + 3; };
+
     // Initialize option to represent 0 (which is the associated with the first function in the above list).
     int option = 0;
 
     // Print menu options and the instruction to input an option number to the command line terminal.
     std::cout << "\n\nEnter the number which corresponds with one of the following functions:";
-    std::cout << "\n\n0 = f(x) = x^2";
-    std::cout << "\n\n1 = f(x) = x^3";
-    std::cout << "\n\n2 = f(x) = sin(x)";
-    std::cout << "\n\n3 = f(x) = cos(x)";
-    std::cout << "\n\n4 = f(x) = sqrt(x)";
+    std::cout << "\n\n0 --> f(x) = x^2";
+    std::cout << "\n\n1 --> f(x) = x^3";
+    std::cout << "\n\n2 --> f(x) = sin(x)";
+    std::cout << "\n\n3 --> f(x) = cos(x)";
+    std::cout << "\n\n4 --> f(x) = sqrt(x)";
+    std::cout << "\n\n5 --> f(x) = 2x + 3";
     std::cout << "\n\nEnter Option Here: ";
 
-    // Scan the command line terminal for the most recent keyboard input value. Store that value in option.
+    // Print menu options and the instruction to input an option number to the file output stream.
+    file << "\n\nEnter the number which corresponds with one of the following functions:";
+    file << "\n\n0 --> f(x) = x^2";
+    file << "\n\n1 --> f(x) = x^3";
+    file << "\n\n2 --> f(x) = sin(x)";
+    file << "\n\n3 --> f(x) = cos(x)";
+    file << "\n\n4 --> f(x) = sqrt(x)";
+    file << "\n\n4 --> f(x) = 2x + 3";
+
+    /**
+     * Scan the command line terminal for the most recent keyboard input value. 
+     * Store that value (which is coerced to be of type int upon storage) in the variable named option.
+     */
     std::cin >> option;
 
-    //...
+    // Print "The value which was entered for option is {option}." to the command line terminal.
+    std::cout << "\nThe value which was entered for option is " << option << ".";
 
+    // Print "The value which was entered for option is {option}." to the file output stream.
+    file << "\n\nThe value which was entered for option is " << option << ".";
+
+    /**
+     * If option is smaller than 0 or if option is larger than 5, set option to 0
+     * and print a message stating that fact to the command line terminal and to the output file stream.
+     */
+    if ((option < 0) || (option > 5))
+    {
+        option = 0;
+        std::cout << "\n\noption was set to 0 by default due to the fact that the value input by the user was not recognized.";
+        file << "\n\noption was set to 0 by default due to the fact that the value input by the user was not recognized.";
+    }
+
+    /**
+     * Print a message about which function was selected by the user to the command line terminal and to the file output stream 
+     * and return that selected function's corresponding Function type object.
+     */
+    if (option == 0) 
+    {
+        std::cout << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = x^2.";
+        file << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = x^2.";
+        return func_0;
+    }
+    if (option == 1) 
+    {
+        std::cout << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = x^3.";
+        file << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = x^3.";
+        return func_1;
+    }
+    if (option == 2) 
+    {
+        std::cout << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = sin(x).";
+        file << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = sin(x).";
+        return func_2;
+    }
+    if (option == 3) 
+    {
+        std::cout << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = cos(x).";
+        file << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = cos(x).";
+        return func_3;
+    }
+    if (option == 4) 
+    {
+        std::cout << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = sqrt(x).";
+        file << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = sqrt(x).";
+        return func_4;
+    }
+    if (option == 5) 
+    {
+        std::cout << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = 2x + 3.";
+        file << "\n\nThe single-variable function which was selected from the list of such functions is f(x) = 2x + 3.";
+        return func_5;
+    }
     return func_0;
 }
