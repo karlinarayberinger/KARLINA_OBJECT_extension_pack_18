@@ -182,7 +182,15 @@ double computeRiemannSum(Function func, double a, double b, int n, const std::st
     return sum;
 }
 
-//...
+/**
+ * This function displays a list of single-variable algebraic functions
+ * on the command line terminal and in the output file stream and
+ * prompts the program user to input an option number which corresponds
+ * with exactly one of the aforementioned functions. 
+ * 
+ * After the user enters some value, the corresponding Function type
+ * object is returned.
+ */
 Function selectFunctionFromListOfFunctions(std::ofstream & file)
 {
     // example function: f(x) = x^2
@@ -223,7 +231,7 @@ Function selectFunctionFromListOfFunctions(std::ofstream & file)
     file << "\n\n2 --> f(x) = sin(x)";
     file << "\n\n3 --> f(x) = cos(x)";
     file << "\n\n4 --> f(x) = sqrt(x)";
-    file << "\n\n4 --> f(x) = 2x + 3";
+    file << "\n\n5 --> f(x) = 2x + 3";
 
     /**
      * Scan the command line terminal for the most recent keyboard input value. 

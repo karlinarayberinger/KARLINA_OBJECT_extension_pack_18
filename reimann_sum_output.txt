@@ -14,11 +14,11 @@ Enter the number which corresponds with one of the following functions:
 
 4 --> f(x) = sqrt(x)
 
-4 --> f(x) = 2x + 3
+5 --> f(x) = 2x + 3
 
-The value which was entered for option is 4.
+The value which was entered for option is 3.
 
-The single-variable function which was selected from the list of such functions is f(x) = sqrt(x).
+The single-variable function which was selected from the list of such functions is f(x) = cos(x).
 
 --------------------------------
 End Of Program
