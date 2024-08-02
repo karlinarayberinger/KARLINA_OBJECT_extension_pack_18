@@ -16,9 +16,15 @@ Enter the number which corresponds with one of the following functions:
 
 5 --> f(x) = 2x + 3
 
+Enter Option Here: 
+
 The value which was entered for option is 3.
 
 The single-variable function which was selected from the list of such functions is f(x) = cos(x).
+
+Enter a value to store in double-type variable a (which represents the left end of the x-axis interval): 
+
+The value which was entered for a is 3.
 
 --------------------------------
 End Of Program

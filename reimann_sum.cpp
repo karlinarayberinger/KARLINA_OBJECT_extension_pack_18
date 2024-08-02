@@ -15,9 +15,25 @@
 // Define the data type for an object which represents a single variable function.
 using Function = std::function<double(double)>;
 
+/** 
+ * Define a struct-type variable named Parameters which stores the three variables needed to take the Reimann Sum 
+ * of some single-variable function (whose dependent variable is x) over some positive-length interval of the x-axis
+ * of a Cartesian grid
+ * where the left end of that interval is represented by a double-type variable named a,
+ * where the right end of that interval is represented by a double-type variable named b,
+ * and where the natural number of times which that interval is divided into equally-sized partitions 
+ * is represented by an int-type variable named n.
+ */
+struct Parameters { 
+    double a; 
+    double b; 
+    int n; 
+};
+
 /** function prototypes */
 double computeRiemannSum(Function func, double a, double b, int n, const std::string& method);
 Function selectFunctionFromListOfFunctions(std::ofstream & file);
+Parameters selectPartitioningValues(std::ofstream & file);
 
 /** program entry point */
 int main() {
@@ -56,6 +72,9 @@ int main() {
      * Store the selected function in a Function type variable named func.
      */
     Function func = selectFunctionFromListOfFunctions(file);
+
+    //...
+    Parameters parameters = selectPartitioningValues(file);
 
     /****/
 
@@ -232,6 +251,7 @@ Function selectFunctionFromListOfFunctions(std::ofstream & file)
     file << "\n\n3 --> f(x) = cos(x)";
     file << "\n\n4 --> f(x) = sqrt(x)";
     file << "\n\n5 --> f(x) = 2x + 3";
+    file << "\n\nEnter Option Here: ";
 
     /**
      * Scan the command line terminal for the most recent keyboard input value. 
@@ -297,4 +317,42 @@ Function selectFunctionFromListOfFunctions(std::ofstream & file)
         return func_5;
     }
     return func_0;
+}
+
+//...
+Parameters selectPartitioningValues(std::ofstream & file)
+{
+    // Declare two double-type variables for storing values which represent the end points of an x-axis interval.
+    double a = 0.0, b = 0.0;
+
+    // Declare one int-type variable for storing the number of equally sized partitions to divide the aforementioned x-axis interval into.
+    int n = 1;
+
+    // Print a message to the command line terminal which prompts the user to input a value to store in the variable named a.
+    std::cout << "\n\nEnter a value to store in double-type variable a (which represents the left end of the x-axis interval): ";
+
+    // Print a message to the output file stream which prompts the user to input a value to store in the variable named a.
+    file << "\n\nEnter a value to store in double-type variable a (which represents the left end of the x-axis interval): ";
+
+    /**
+     * Scan the command line terminal for the most recent keyboard input value. 
+     * Store that value in the variable named a of the struct named parameters.
+     */
+    std::cin >> a;
+
+    // Print "The value which was entered for a is {a}." to the command line terminal.
+    std::cout << "\nThe value which was entered for a is " << a << ".";
+
+    // Print "The value which was entered for a is {a}." to the file output stream.
+    file << "\n\nThe value which was entered for a is " << a << ".";
+
+    //...
+
+    Parameters parameters;
+
+    parameters.a = a;
+    parameters.b = b;
+    parameters.n = n;
+
+    return parameters;
 }
