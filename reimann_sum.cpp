@@ -79,8 +79,13 @@ int main() {
      */
     Function func = selectFunctionFromListOfFunctions(file);
 
-    //...
+    /**
+     * Prompt the user to select end-point values for an interval of the x-axis, [a,b], 
+     * and for the number, n, of equally-sized partitions of that interval.
+     */
     Parameters parameters = selectPartitioningValues(file);
+
+    std::cout << "\n\nparameters.a = " << parameters.a;
 
     /****/
 
@@ -154,33 +159,21 @@ double computeRiemannSum(Function func, double a, double b, int n, const std::st
 
     /**
      * Print an error message to the console window if
-     * b is smaller than MINIMUM_b or if
-     * b is larger than MAXIMUM_b
-     * and exit the function by returning zero.
-     */
-    if ((b < MINIMUM_a) || (b > MAXIMUM_a))
-    {
-        std::cout << "\n\nInvalid interval end-point. b is required to be within range [" << MINIMUM_a << "," << MAXIMUM_a << "].";
-        return 0.0;
-    }
-
-    /**
-     * Print an error message to the console window if
      * b is smaller than or equal to a
      * and exit the function by returning zero.
      */
-    if ((b < a) || (b == a))
+    if ((b <= a) || (b > MAXIMUM_a))
     {
-        std::cout << "\n\nInvalid interval. b is required to represent a larger value than is a.";
+        std::cout << "\n\nInvalid interval. b is required to represent a value which is larger than a.";
         return 0.0;
     }
 
     /**
      * Print an error message to the console window if
-     * n is smaller than one (or larger than MAXIMUM_n)
+     * n is smaller than one (or larger than MAXIMUM_a)
      * and exit the function by returning zero.
      */
-    if ((n < MINIMUM_n) || (n > MAXIMUM_n))
+    if ((n < 1) || (n > MAXIMUM_a))
     {
         std::cout << "Invalid partition number. n is required to represent a natural number no larger than.";
         return 0.0;
@@ -486,15 +479,6 @@ Parameters selectPartitioningValues(std::ofstream & file)
         return default_params;
     }
 
-   //...
-
-    // .. batteries are almost out.,..to the outlets!
-    
-    Parameters parameters;
-/*
-    parameters.a = a;
-    parameters.b = b;
-    parameters.n = n;*/
-
-    return parameters;
+    // Return a struct whose data type is Parameters and whose data attributes are the values which the user entered during a runtime instance of this function.
+    return {a,b,n};
 }
