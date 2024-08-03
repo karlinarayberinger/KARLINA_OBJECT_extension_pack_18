@@ -92,6 +92,14 @@ int main() {
      */
     Parameters parameters = selectPartitioningValues(file);
 
+    // Print a horizontal dividing line to the command line terminal.
+    std::cout << "\n\n--------------------------------";
+
+    // Print a horizontal dividing line to the file output stream.
+    file << "\n\n--------------------------------";
+
+    std::string method = selectRectangleConstructionMethod(file);
+
     /****/
 
     // Print a closing message to the command line terminal.
@@ -532,5 +540,50 @@ std::string selectRectangleConstructionMethod(std::ofstream & file)
     file << "\n\n2 --> \"midpoint\"";
     file << "\n\nEnter Option Here: ";
 
-    return "poops";
+    /**
+     * Scan the command line terminal for the most recent keyboard input value. 
+     * Store that value (which is coerced to be of type int upon storage) in the variable named option.
+     */
+    std::cin >> option;
+
+    // Print "The value which was entered for option is {option}." to the command line terminal.
+    std::cout << "\nThe value which was entered for option is " << option << ".";
+
+    // Print "The value which was entered for option is {option}." to the file output stream.
+    file << "\n\nThe value which was entered for option is " << option << ".";
+
+    /**
+     * If option is smaller than 0 or if option is larger than 2, set option to 0
+     * and print a message stating that fact to the command line terminal and to the output file stream.
+     */
+    if ((option < 0) || (option > 2))
+    {
+        option = 0;
+        std::cout << "\n\noption was set to 0 by default due to the fact that the value input by the user was not recognized.";
+        file << "\n\noption was set to 0 by default due to the fact that the value input by the user was not recognized.";
+    }
+
+    /**
+     * Print a message about which function was selected by the user to the command line terminal and to the file output stream 
+     * and return that selected method's corresponding string type object.
+     */
+    if (option == 0) 
+    {
+        std::cout << "\n\nThe rectangle construction method which was selected from the list of such methods is \"left\" (i.e. using the left end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles).";
+        file << "\n\nThe rectangle construction method which was selected from the list of such methods is \"left\" (i.e. using the left end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles).";
+        return method_0;
+    }
+    if (option == 1) 
+    {
+        std::cout << "\n\nThe rectangle construction method which was selected from the list of such methods is \"right\" (i.e. using the right end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles).";
+        file << "\n\nThe rectangle construction method which was selected from the list of such methods is \"right\" (i.e. using the right end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles).";
+        return method_1;
+    }
+    if (option == 2) 
+    {
+        std::cout << "\n\nThe rectangle construction method which was selected from the list of such methods is \"midpoint\" (i.e. using the middle point of each of the n partitions of [a,b] to set the height of each of the n rectangles).";
+        file << "\n\nThe rectangle construction method which was selected from the list of such methods is \"midpoint\" (i.e. using the middle point of each of the n partitions of [a,b] to set the height of each of the n rectangles).";
+        return method_2;
+    }
+    return method_0;
 }
