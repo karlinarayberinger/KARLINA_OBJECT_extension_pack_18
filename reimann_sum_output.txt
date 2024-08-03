@@ -18,21 +18,27 @@ Enter the number which corresponds with one of the following functions:
 
 Enter Option Here: 
 
-The value which was entered for option is 0.
+The value which was entered for option is 3.
 
-The single-variable function which was selected from the list of such functions is f(x) = x^2.
+The single-variable function which was selected from the list of such functions is f(x) = cos(x).
+
+--------------------------------
 
 Enter a value to store in double-type variable a (which represents the left end of the x-axis interval): 
 
-The value which was entered for a is 3.
+The value which was entered for a is 4.
 
 Enter a value to store in double-type variable b (which represents the right end of the x-axis interval): 
 
-The value which was entered for b is 5.
+The value which was entered for b is 9.
 
 Enter a value to store in int-type variable n (which represents the number of equally-sized partitions to divide x-axis interval [a,b] into): 
 
 The value which was entered for n is 10.
+
+The x-axis interval which was selected to partition is [4,9].
+
+The selected number of equally-sized partitions to divide that interval into is 10.
 
 --------------------------------
 End Of Program

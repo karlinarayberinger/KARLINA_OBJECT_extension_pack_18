@@ -40,6 +40,7 @@ struct Parameters {
 double computeRiemannSum(Function func, double a, double b, int n, const std::string& method);
 Function selectFunctionFromListOfFunctions(std::ofstream & file);
 Parameters selectPartitioningValues(std::ofstream & file);
+std::string selectRectangleConstructionMethod(std::ofstream & file);
 
 /** program entry point */
 int main() {
@@ -79,13 +80,17 @@ int main() {
      */
     Function func = selectFunctionFromListOfFunctions(file);
 
+    // Print a horizontal dividing line to the command line terminal.
+    std::cout << "\n\n--------------------------------";
+
+    // Print a horizontal dividing line to the file output stream.
+    file << "\n\n--------------------------------";
+
     /**
      * Prompt the user to select end-point values for an interval of the x-axis, [a,b], 
      * and for the number, n, of equally-sized partitions of that interval.
      */
     Parameters parameters = selectPartitioningValues(file);
-
-    std::cout << "\n\nparameters.a = " << parameters.a;
 
     /****/
 
@@ -479,6 +484,53 @@ Parameters selectPartitioningValues(std::ofstream & file)
         return default_params;
     }
 
+    /**
+     * Print a message about which x-axis interval and partition number were selected 
+     * by the user to the command line terminal and to the file output stream.
+     */
+    std::cout << "\n\nThe x-axis interval which was selected to partition is [" << a << "," << b << "].";
+    std::cout << "\n\nThe selected number of equally-sized partitions to divide that interval into is " << n << ".";
+    file << "\n\nThe x-axis interval which was selected to partition is [" << a << "," << b << "].";
+    file << "\n\nThe selected number of equally-sized partitions to divide that interval into is " << n << ".";
+
     // Return a struct whose data type is Parameters and whose data attributes are the values which the user entered during a runtime instance of this function.
     return {a,b,n};
+}
+
+//....
+std::string selectRectangleConstructionMethod(std::ofstream & file)
+{
+    /**
+     * The following three read-only string variables each refer to a specific method of visualizing n rectangles 
+     * whose widths are the length of each one of the n partitions of [a,b] and 
+     * whose heights are f(xi) where xi is some point within [a,b].
+     * 
+     * "left" refers to the method of using the left end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles.
+     * 
+     * "right" refers to the method of using the right end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles.
+     * 
+     * "midpoint" refers to the method of using the middle point of each of the n partitions of [a,b] to set the height of each of the n rectangles.
+     */
+    const std::string method_0 = "left";
+    const std::string method_1 = "right";
+    const std::string method_2 = "midpoint";
+
+    // Initialize option to represent 0 (which is the associated with the first method in the above list).
+    int option = 0;
+
+    // Print menu options and the instruction to input an option number to the command line terminal.
+    std::cout << "\n\nEnter the number which corresponds with one of the following rectangle construction methods:";
+    std::cout << "\n\n0 --> \"left\"";
+    std::cout << "\n\n1 --> \"right\"";    
+    std::cout << "\n\n2 --> \"midpoint\"";
+    std::cout << "\n\nEnter Option Here: ";
+
+    // Print menu options and the instruction to input an option number to the file output stream.
+    file << "\n\nEnter the number which corresponds with one of the following rectangle construction methods:";
+    file << "\n\n0 --> \"left\"";
+    file << "\n\n1 --> \"right\"";    
+    file << "\n\n2 --> \"midpoint\"";
+    file << "\n\nEnter Option Here: ";
+
+    return "poops";
 }
