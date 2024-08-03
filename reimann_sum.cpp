@@ -37,7 +37,7 @@ struct Parameters {
 };
 
 /** function prototypes */
-double computeRiemannSum(Function func, double a, double b, int n, const std::string& method);
+double computeRiemannSum(Function func, double a, double b, int n, const std::string& method, std::ofstream & file);
 Function selectFunctionFromListOfFunctions(std::ofstream & file);
 Parameters selectPartitioningValues(std::ofstream & file);
 std::string selectRectangleConstructionMethod(std::ofstream & file);
@@ -98,9 +98,27 @@ int main() {
     // Print a horizontal dividing line to the file output stream.
     file << "\n\n--------------------------------";
 
+    /**
+     * Prompt the user to select a partitioning method by which to
+     * construct n rectangles whose heights are where the x-value in f(x) 
+     * is either the left end-points,
+     * the right end-points, 
+     * or the middle points of the n equally-sized
+     * partitions of x-axis interval, [a,b].
+     */
     std::string method = selectRectangleConstructionMethod(file);
 
-    /****/
+    // Print a horizontal dividing line to the command line terminal.
+    std::cout << "\n\n--------------------------------";
+
+    // Print a horizontal dividing line to the file output stream.
+    file << "\n\n--------------------------------";
+
+    // Compute the Riemann sum.
+    double sum = computeRiemannSum(func, parameters.a, parameters.b, parameters.n, method, file);
+
+    // Print the result of the above function execution to the command line terminal and to the output file stream.
+    std::cout << "The Reimann Sum obtained by this program runtime instance is " << sum << ".";
 
     // Print a closing message to the command line terminal.
     std::cout << "\n\n--------------------------------";
@@ -117,31 +135,6 @@ int main() {
 
     // Exit the program.
     return 0; 
-
-    /****/
-    /*
-    // example function: f(x) = x^2
-    Function func = [](double x) { return x * x; };
-
-    // x-axis interval [a, b]
-    double a = 0.0;
-    double b = 1.0;
-
-    // number of partitions
-    int n = 100;
-
-    // method: "left", "right", or "midpoint"
-    std::string method = "midpoint";
-
-    // Compute the Riemann sum.
-    double sum = computeRiemannSum(func, a, b, n, method);
-
-    // Print the Reimann sum to the command line terminal.
-    std::cout << "Riemann sum: " << sum << "\n\n";
-
-    // Exit the program.
-    return 0;
-    */
 }
 
 /**
@@ -153,13 +146,13 @@ int main() {
  * right end point, 
  * or middle point of that rectangle's respective x-axis partition.
  */
-double computeRiemannSum(Function func, double a, double b, int n, const std::string& method) {
+double computeRiemannSum(Function func, double a, double b, int n, const std::string& method, std::ofstream & file) {
 
     // Initialize sum, dx, and x to each store the value zero.
     double sum = 0.0, dx = 0.0, x = 0.0;
 
     /**
-     * Print an error message to the console window if
+     * Print an error message to the console window (and output file) if
      * a is smaller than MINIMUM_a or if
      * a is larger than MAXIMUM_a
      * and exit the function by returning zero.
@@ -167,34 +160,45 @@ double computeRiemannSum(Function func, double a, double b, int n, const std::st
     if ((a < MINIMUM_a) || (a > MAXIMUM_a))
     {
         std::cout << "\n\nInvalid interval end-point. a is required to be within range [" << MINIMUM_a << "," << MAXIMUM_a << "].";
+        file << "\n\nInvalid interval end-point. a is required to be within range [" << MINIMUM_a << "," << MAXIMUM_a << "].";
         return 0.0;
     }
 
     /**
-     * Print an error message to the console window if
+     * Print an error message to the console window (and output file) if
      * b is smaller than or equal to a
      * and exit the function by returning zero.
      */
     if ((b <= a) || (b > MAXIMUM_a))
     {
         std::cout << "\n\nInvalid interval. b is required to represent a value which is larger than a.";
+        file << "\n\nInvalid interval. b is required to represent a value which is larger than a.";
         return 0.0;
     }
 
     /**
-     * Print an error message to the console window if
+     * Print an error message to the console window (and output file) if
      * n is smaller than one (or larger than MAXIMUM_a)
      * and exit the function by returning zero.
      */
     if ((n < 1) || (n > MAXIMUM_a))
     {
         std::cout << "Invalid partition number. n is required to represent a natural number no larger than.";
+        file << "Invalid partition number. n is required to represent a natural number no larger than.";
         return 0.0;
     }
 
     // Set dx to represent the length of each one of the n equally-sized partitions of the x-axis interval [a,b].
     dx = (b - a) / n;
-        
+
+    // Print the value of dx and the above equation to the command line terminal and to the output file stream.
+    std::cout << "\n\ndx = (b - a) / n = (" << b << " - " << b << ") / " << n << " = " << dx << ". // the length of each of the n equally-sized partitions of x-axis interval, [a,b]";
+    file << "\n\ndx = (b - a) / n = (" << b << " - " << b << ") / " << n << " = " << dx << ". // the length of each of the n equally-sized partitions of x-axis interval, [a,b]";
+   
+    // Print a horizontal divider line to the command line terminal and to the file output stream.
+    std::cout << "\n\n~~~~~~~~~~~~~~";
+    file << "\n\n~~~~~~~~~~~~~~";
+
     /**
      * For each one of the n equally-sized partitions of the x-axis,
      * compute the approximate area of the region bounded by y = f(x) = func,
@@ -205,17 +209,36 @@ double computeRiemannSum(Function func, double a, double b, int n, const std::st
      */
     for (int i = 0; i < n; ++i) 
     {
+        // Print the value of i to the command line terminal and to the output file stream.
+        std::cout << "\n\ni = " << i << ". // current iteration of the for loop (of " << n << " iterations)";
+        file << "\n\ni = " << i << ". // current iteration of the for loop (of " << n << " iterations)";
+
         if (method == "left") 
         {
+            // Determine the left end-point of the ith partition of [a,b].
             x = a + i * dx;
+
+            // Print the value of x and the above equation to the command line terminal and to the output file stream.
+            std::cout << "\n\nx = a + i * dx = " << a << " + " << i << " * " << dx << " = " << x << ". // the left end-point of the ith partition of [a,b].";
+            file << "\n\nx = a + i * dx = " << a << " + " << i << " * " << dx << " = " << x << ". // the left end-point of the ith partition of [a,b].";
         } 
         else if (method == "right") 
         {
+            // Determine the right end-point of the ith partition of [a,b].
             x = a + (i + 1) * dx;
+
+            // Print the value of x and the above equation to the command line terminal and to the output file stream.
+            std::cout << "\n\nx = a + (i + 1) * dx = " << a << " + (" << i << " + 1) * " << dx << " = " << x << ". // the right end-point of the ith partition of [a,b].";
+            file << "\n\nx = a + (i + 1) * dx = " << a << " + (" << i << " + 1) * " << dx << " = " << x << ". // the right end-point of the ith partition of [a,b].";
         } 
         else if (method == "midpoint") 
         {
+            // Determine the middle point of the ith partition of [a,b].
         	x = a + (i + 0.5) * dx;
+
+            // Print the value of x and the above equation to the command line terminal and to the output file stream.
+            std::cout << "\n\nx = a + (i + 0.5) * dx = " << a << " + (" << i << " + 0.5) * " << dx << " = " << x << ". // the middle point of the ith partition of [a,b].";
+            file << "\n\nx = a + (i + 0.5) * dx = " << a << " + (" << i << " + 0.5) * " << dx << " = " << x << ". // the middle point of the ith partition of [a,b].";
         }
 
         /**
@@ -231,6 +254,20 @@ double computeRiemannSum(Function func, double a, double b, int n, const std::st
 
         // Add the area of the current rectangle to the running total sum.
         sum += func(x) * dx; 
+
+        // Print the right-hand value of the above equation to the command line terminal and to the output file stream.
+        std::cout << "\n\nrectangle_area_x = func(x) * dx = " << func(x) << " * " << dx << " = " << (func(x) * dx) << ". // area of the ith rectangle";
+        file << "\n\nrectangle_area_x = func(x) * dx = " << func(x) << " * " << dx << " = " << (func(x) * dx) << ". // area of the ith rectangle";
+
+        // Print the running total obtained by adding the area of the ith rectangle to the value stored in the variable named sum to the command line terminal and to the output file stream.
+        std::cout << "\n\nsum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).";
+        std::cout << "\n\nsum = " << sum << ". // the current value stored in the variable named sum";
+        file << "\n\nsum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).";
+        file << "\n\nsum = " << sum << ". // the current value stored in the variable named sum";
+
+        // Print a horizontal divider line to the command line terminal and to the file output stream.
+        std::cout << "\n\n~~~~~~~~~~~~~~";
+        file << "\n\n~~~~~~~~~~~~~~";
     }
 
     // Return the Reimann sum obtained by adding each of the n rectangle areas.
@@ -505,7 +542,15 @@ Parameters selectPartitioningValues(std::ofstream & file)
     return {a,b,n};
 }
 
-//....
+/**
+ * This function displays a list of Reimann Sum partitioning methods
+ * on the command line terminal and in the output file stream and
+ * prompts the program user to input an option number which corresponds
+ * with exactly one of the aforementioned methods. 
+ * 
+ * After the user enters some value, the corresponding string type
+ * object is returned.
+ */
 std::string selectRectangleConstructionMethod(std::ofstream & file)
 {
     /**
