@@ -1,4 +1,4 @@
-  /**
+/**
  * file: reimann_sum.cpp
  * type: plain-text
  * date: 02_AUGUST_2024
