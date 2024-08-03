@@ -1,0 +1,863 @@
+<hr>
+<p><strong>REIMANN_SUM</strong></p>
+<hr>
+<p><span style="background:#ffff00">The <a style="background:#ff9000;color:#000000" href="https://en.wikipedia.org/wiki/C%2B%2B" target="_blank" rel="noopener">C++</a> program featured in this tutorial web page uses an iterative looping method to compute the approximate <a style="background:#ff9000;color:#000000" href="https://en.wikipedia.org/wiki/Riemann_integral" target="_blank" rel="noopener">(Reimann) integral</a> of some single-variable function (whose independent variable is x) across some interval of the x-axis (of a two-dimensional <a style="background:#000000;color:#00ff00" href="https://karlinaobject.wordpress.com/triangle/" target="_blank" rel="noopener">Cartesian grid</a>) whose end-points are a and b. The method is referred to as computing the <a style="background:#ff9000;color:#000000" href="https://en.wikipedia.org/wiki/Riemann_sum" target="_blank" rel="noopener">Reimann Sum</a> of that respective integral using an arbitrary <a style="background:#000000;color:#ff9000" href="https://karlinaobject.wordpress.com/number/" target="_blank" rel="noopener">(natural) number</a>, n, of rectangular partitions of that integral&#8217;s two-dimensional area. The sum is computed by adding up the areas of those rectangles.</span></p>
+<p><em>To view hidden text inside each of the preformatted text boxes below, scroll horizontally.</em></p>
+<pre>
+    // Essential Program Functions:
+
+    /**
+     * Prompt the user to select one of multiple single-variable functions from a list.
+     * Store the selected function in a Function type variable named func.
+     */
+    Function func = selectFunctionFromListOfFunctions(file);
+
+    /**
+     * Prompt the user to select end-point values for an interval of the x-axis, [a,b], 
+     * and for the number, n, of equally-sized partitions of that interval.
+     */
+    Parameters parameters = selectPartitioningValues(file);
+
+    /**
+     * Prompt the user to select a partitioning method by which to
+     * construct n rectangles whose heights are where the x-value in f(x) 
+     * is either the left end-points,
+     * the right end-points, 
+     * or the middle points of the n equally-sized
+     * partitions of x-axis interval, [a,b].
+     */
+    std::string method = selectRectangleConstructionMethod(file);
+
+    // Compute the Riemann sum.
+    double sum = computeRiemannSum(func, parameters.a, parameters.b, parameters.n, method, file);
+</pre>
+<hr>
+<p><strong>SOFTWARE_APPLICATION_COMPONENTS</strong></p>
+<hr>
+<p>C++_source_file: <a style="background:#000000;color:#00ff00" href="https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/reimann_sum.cpp" target="_blank" rel="noopener">https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/reimann_sum.cpp</a></p>
+<p>plain-text_file: <a style="background:#000000;color:#ff9000" href="https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/reimann_sum_output.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/reimann_sum_output.txt</a></p>
+<hr>
+<p><strong>PROGRAM_COMPILATION_AND_EXECUTION</strong></p>
+<hr>
+<p>STEP_0: Copy and paste the C++ <a style="background:#000000;color:#00ff00" href="https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/reimann_sum.cpp" target="_blank" rel="noopener">source code</a> into a new text editor document and save that document as the following file name:</p>
+<pre>reimann_sum.cpp</pre>
+<p>STEP_1: Open a <a style="background:#ff9000;color:#000000" href="https://en.wikipedia.org/wiki/Unix" target="_blank" rel="noopener">Unix</a> command line terminal application and set the current directory to wherever the C++ is located on the local machine (e.g. Desktop).</p>
+<pre>cd Desktop</pre>
+<p>STEP_2: Compile the C++ file into machine-executable instructions (i.e. object file) and then into an executable piece of software named <strong>app</strong> using the following command:</p>
+<pre>g++ reimann_sum.cpp -o app</pre>
+<p>STEP_3: If the program compilation command does not work, then use the following command to install the C++ compiler:</p>
+<pre>sudo apt install build-essential</pre>
+<p>STEP_4: After running the <strong>g++</strong> command, run the executable file using the following command:</p>
+<pre>./app</pre>
+<p>STEP_5: Once the application is running, several prompts will appear which ask the program user to select a single-variable function from a menu, x-axis interval end-points, number of equally-sized partitions to divide that interval into, and the method by which to determine the heights of the rectangles which are used to approximate the area bound between that function, those x-axis interval end-points, and the x-axis.</p>
+<p>STEP_6: Observe program results on the command line terminal and in the <a style="background:#000000;color:#ff9000" href="https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/reimann_sum_output.txt" target="_blank" rel="noopener">output file</a>.</p>
+<hr>
+<p><strong>PROGRAM_SOURCE_CODE</strong></p>
+<hr>
+<p><em>When copy-pasting the source code from the preformatted text box below into a text editor document, remove the spaces between the angle brackets and the library names in the preprocessing directives code block. (The spaces were inserted between the library names and angle brackets in the preformatted text box below in order to prevent the WordPress server from misinterpreting those C++ library references as <a style="background:#ff9000;color:#000000" href="https://en.wikipedia.org/wiki/HTML" target="_blank" rel="noopener">HTML</a> tags in the source code of this web page).</em></p>
+<p>C++_source_file: <a style="background:#000000;color:#00ff00" href="https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/reimann_sum.cpp" target="_blank" rel="noopener">https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/reimann_sum.cpp</a></p>
+<hr>
+<pre>
+/**
+ * file: reimann_sum.cpp
+ * type: plain-text
+ * date: 03_AUGUST_2024
+ * author: karbytes
+ * license: PUBLIC_DOMAIN
+ */
+
+/** preprocessing directives */
+#include &lt; iostream &gt; // standard input (std::cin), standard output (std::cout)
+#include &lt; fstream &gt; // file input, file output, file open, file close
+#include &lt; cmath &gt; // sine function (sin(x)), cosine function (cos(x)), square root function (sqrt(x))
+#include &lt; functional &gt; // define custom Function type
+#define MINIMUM_a -999 // constant which represents the minimum a value
+#define MAXIMUM_a 999 // constant which represents the maximum a value
+// #define MINIMUM_b -999 // constant which represents the minimum b value
+// #define MAXIMUM_b 999 // constant which represents the maximum b value
+// #define MINIMUM_n 1 // constant which represents the minimum n value
+// #define MAXIMUM_n 999 // constant which represents the maximum n value
+
+// Define the data type for an object which represents a single variable function.
+using Function = std::function &lt; double(double) &gt;;
+
+/** 
+ * Define a struct-type variable named Parameters which stores the three variables needed to take the Reimann Sum 
+ * of some single-variable function (whose dependent variable is x) over some positive-length interval of the x-axis
+ * of a Cartesian grid
+ * where the left end of that interval is represented by a double-type variable named a,
+ * where the right end of that interval is represented by a double-type variable named b,
+ * and where the natural number of times which that interval is divided into equally-sized partitions 
+ * is represented by an int-type variable named n.
+ */
+struct Parameters { 
+    double a; 
+    double b; 
+    int n; 
+};
+
+/** function prototypes */
+double computeRiemannSum(Function func, double a, double b, int n, const std::string&amp; method, std::ofstream &amp; file);
+Function selectFunctionFromListOfFunctions(std::ofstream &amp; file);
+Parameters selectPartitioningValues(std::ofstream &amp; file);
+std::string selectRectangleConstructionMethod(std::ofstream &amp; file);
+
+/** program entry point */
+int main() {
+
+    // Declare a file output stream object.
+    std::ofstream file;
+
+    // Set the number of digits of floating-point numbers which are printed to the command line terminal to 100 digits.
+    std::cout.precision(100);
+
+    // Set the number of digits of floating-point numbers which are printed to the file output stream to 100 digits.
+    file.precision(100);
+
+    /**
+     * If the file named reimann_sum_output.txt does not already exist 
+     * inside of the same file directory as the file named reimann_sum.cpp, 
+     * create a new file named reimann_sum_output.txt in that directory.
+     * 
+     * Open the plain-text file named reimann_sum_output.txt
+     * and set that file to be overwritten with program data.
+     */
+    file.open("reimann_sum_output.txt");
+
+    // Print an opening message to the command line terminal.
+    std::cout &lt;&lt; &quot;\n\n--------------------------------&quot;;
+    std::cout &lt;&lt; &quot;\nStart Of Program&quot;;
+    std::cout &lt;&lt; &quot;\n--------------------------------&quot;;
+
+    // Print an opening message to the file output stream.
+    file &lt;&lt; &quot;--------------------------------&quot;;
+    file &lt;&lt; &quot;\nStart Of Program&quot;;
+    file &lt;&lt; &quot;\n--------------------------------&quot;;
+
+    /**
+     * Prompt the user to select one of multiple single-variable functions from a list.
+     * Store the selected function in a Function type variable named func.
+     */
+    Function func = selectFunctionFromListOfFunctions(file);
+
+    // Print a horizontal dividing line to the command line terminal.
+    std::cout &lt;&lt; &quot;\n\n--------------------------------&quot;;
+
+    // Print a horizontal dividing line to the file output stream.
+    file &lt;&lt; &quot;\n\n--------------------------------&quot;;
+
+    /**
+     * Prompt the user to select end-point values for an interval of the x-axis, [a,b], 
+     * and for the number, n, of equally-sized partitions of that interval.
+     */
+    Parameters parameters = selectPartitioningValues(file);
+
+    // Print a horizontal dividing line to the command line terminal.
+    std::cout &lt;&lt; &quot;\n\n--------------------------------&quot;;
+
+    // Print a horizontal dividing line to the file output stream.
+    file &lt;&lt; &quot;\n\n--------------------------------&quot;;
+
+    /**
+     * Prompt the user to select a partitioning method by which to
+     * construct n rectangles whose heights are where the x-value in f(x) 
+     * is either the left end-points,
+     * the right end-points, 
+     * or the middle points of the n equally-sized
+     * partitions of x-axis interval, [a,b].
+     */
+    std::string method = selectRectangleConstructionMethod(file);
+
+    // Print a horizontal dividing line to the command line terminal.
+    std::cout &lt;&lt; &quot;\n\n--------------------------------&quot;;
+
+    // Print a horizontal dividing line to the file output stream.
+    file &lt;&lt; &quot;\n\n--------------------------------&quot;;
+
+    // Compute the Riemann sum.
+    double sum = computeRiemannSum(func, parameters.a, parameters.b, parameters.n, method, file);
+
+    // Print the result of the above function execution to the command line terminal and to the output file stream.
+    std::cout &lt;&lt; &quot;\n\nThe Reimann Sum obtained by this program runtime instance is &quot; &lt;&lt; sum &lt;&lt; &quot;.&quot;;
+
+    // Print a closing message to the command line terminal.
+    std::cout &lt;&lt; &quot;\n\n--------------------------------&quot;;
+    std::cout &lt;&lt; &quot;\nEnd Of Program&quot;;
+    std::cout &lt;&lt; &quot;\n--------------------------------\n\n&quot;;
+
+    // Print a closing message to the file output stream.
+    file &lt;&lt; &quot;\n\n--------------------------------&quot;;
+    file &lt;&lt; &quot;\nEnd Of Program&quot;;
+    file &lt;&lt; &quot;\n--------------------------------&quot;;
+
+    // Close the file output stream.
+    file.close();
+
+    // Exit the program.
+    return 0; 
+}
+
+/**
+ * This function computes the Reimann sum for some arbitrary interval of the x-axis, 
+ * some arbitrary number of equally sized partitions of the x-axis, 
+ * some arbitrary single variable function (whose dependent variable is x), 
+ * and the option to generate rectangles whose left sides either align with 
+ * the left end point, 
+ * right end point, 
+ * or middle point of that rectangle&#039;s respective x-axis partition.
+ */
+double computeRiemannSum(Function func, double a, double b, int n, const std::string&amp; method, std::ofstream &amp; file) {
+
+    // Initialize sum, dx, and x to each store the value zero.
+    double sum = 0.0, dx = 0.0, x = 0.0;
+
+    /**
+     * Print an error message to the console window (and output file) if
+     * a is smaller than MINIMUM_a or if
+     * a is larger than MAXIMUM_a
+     * and exit the function by returning zero.
+     */
+    if ((a  MAXIMUM_a))
+    {
+        std::cout &lt;&lt; &quot;\n\nInvalid interval end-point. a is required to be within range [&quot; &lt;&lt; MINIMUM_a &lt;&lt; &quot;,&quot; &lt;&lt; MAXIMUM_a &lt;&lt; &quot;].&quot;;
+        file &lt;&lt; &quot;\n\nInvalid interval end-point. a is required to be within range [&quot; &lt;&lt; MINIMUM_a &lt;&lt; &quot;,&quot; &lt;&lt; MAXIMUM_a &lt;&lt; &quot;].&quot;;
+        return 0.0;
+    }
+
+    /**
+     * Print an error message to the console window (and output file) if
+     * b is smaller than or equal to a
+     * and exit the function by returning zero.
+     */
+    if ((b  MAXIMUM_a))
+    {
+        std::cout &lt;&lt; &quot;\n\nInvalid interval. b is required to represent a value which is larger than a.&quot;;
+        file &lt;&lt; &quot;\n\nInvalid interval. b is required to represent a value which is larger than a.&quot;;
+        return 0.0;
+    }
+
+    /**
+     * Print an error message to the console window (and output file) if
+     * n is smaller than one (or larger than MAXIMUM_a)
+     * and exit the function by returning zero.
+     */
+    if ((n  MAXIMUM_a))
+    {
+        std::cout &lt;&lt; &quot;Invalid partition number. n is required to represent a natural number no larger than.&quot;;
+        file &lt;&lt; &quot;Invalid partition number. n is required to represent a natural number no larger than.&quot;;
+        return 0.0;
+    }
+
+    // Set dx to represent the length of each one of the n equally-sized partitions of the x-axis interval [a,b].
+    dx = (b - a) / n;
+
+    // Print the value of dx and the above equation to the command line terminal and to the output file stream.
+    std::cout &lt;&lt; &quot;\n\ndx = (b - a) / n = (&quot; &lt;&lt; b &lt;&lt; &quot; - &quot; &lt;&lt; a &lt;&lt; &quot;) / &quot; &lt;&lt; n &lt;&lt; &quot; = &quot; &lt;&lt; dx &lt;&lt; &quot;. // the length of each of the n equally-sized partitions of x-axis interval, [a,b]&quot;;
+    file &lt;&lt; &quot;\n\ndx = (b - a) / n = (&quot; &lt;&lt; b &lt;&lt; &quot; - &quot; &lt;&lt; a &lt;&lt; &quot;) / &quot; &lt;&lt; n &lt;&lt; &quot; = &quot; &lt;&lt; dx &lt;&lt; &quot;. // the length of each of the n equally-sized partitions of x-axis interval, [a,b]&quot;;
+   
+    // Print a horizontal divider line to the command line terminal and to the file output stream.
+    std::cout &lt;&lt; &quot;\n\n~~~~~~~~~~~~~~&quot;;
+    file &lt;&lt; &quot;\n\n~~~~~~~~~~~~~~&quot;;
+
+    /**
+     * For each one of the n equally-sized partitions of the x-axis,
+     * compute the approximate area of the region bounded by y = f(x) = func,
+     * the x-axis, and the vertical lines which intersect with the endpoints (or mid points)
+     * of the respective x-axis partition.
+     *
+     * Then add that area (which is the area of some rectangle) to sum.
+     */
+    for (int i = 0; i &lt; n; ++i) 
+    {
+        // Print the value of i to the command line terminal and to the output file stream.
+        std::cout &lt;&lt; &quot;\n\ni = &quot; &lt;&lt; i &lt;&lt; &quot;. // current iteration of the for loop (of &quot; &lt;&lt; n &lt;&lt; &quot; iterations)&quot;;
+        file &lt;&lt; &quot;\n\ni = &quot; &lt;&lt; i &lt;&lt; &quot;. // current iteration of the for loop (of &quot; &lt;&lt; n &lt;&lt; &quot; iterations)&quot;;
+
+        if (method == &quot;left&quot;) 
+        {
+            // Determine the left end-point of the ith partition of [a,b].
+            x = a + i * dx;
+
+            // Print the value of x and the above equation to the command line terminal and to the output file stream.
+            std::cout &lt;&lt; &quot;\n\nx = a + i * dx = &quot; &lt;&lt; a &lt;&lt; &quot; + &quot; &lt;&lt; i &lt;&lt; &quot; * &quot; &lt;&lt; dx &lt;&lt; &quot; = &quot; &lt;&lt; x &lt;&lt; &quot;. // the left end-point of the ith partition of [a,b].&quot;;
+            file &lt;&lt; &quot;\n\nx = a + i * dx = &quot; &lt;&lt; a &lt;&lt; &quot; + &quot; &lt;&lt; i &lt;&lt; &quot; * &quot; &lt;&lt; dx &lt;&lt; &quot; = &quot; &lt;&lt; x &lt;&lt; &quot;. // the left end-point of the ith partition of [a,b].&quot;;
+        } 
+        else if (method == &quot;right&quot;) 
+        {
+            // Determine the right end-point of the ith partition of [a,b].
+            x = a + (i + 1) * dx;
+
+            // Print the value of x and the above equation to the command line terminal and to the output file stream.
+            std::cout &lt;&lt; &quot;\n\nx = a + (i + 1) * dx = &quot; &lt;&lt; a &lt;&lt; &quot; + (&quot; &lt;&lt; i &lt;&lt; &quot; + 1) * &quot; &lt;&lt; dx &lt;&lt; &quot; = &quot; &lt;&lt; x &lt;&lt; &quot;. // the right end-point of the ith partition of [a,b].&quot;;
+            file &lt;&lt; &quot;\n\nx = a + (i + 1) * dx = &quot; &lt;&lt; a &lt;&lt; &quot; + (&quot; &lt;&lt; i &lt;&lt; &quot; + 1) * &quot; &lt;&lt; dx &lt;&lt; &quot; = &quot; &lt;&lt; x &lt;&lt; &quot;. // the right end-point of the ith partition of [a,b].&quot;;
+        } 
+        else if (method == &quot;midpoint&quot;) 
+        {
+            // Determine the middle point of the ith partition of [a,b].
+        	x = a + (i + 0.5) * dx;
+
+            // Print the value of x and the above equation to the command line terminal and to the output file stream.
+            std::cout &lt;&lt; &quot;\n\nx = a + (i + 0.5) * dx = &quot; &lt;&lt; a &lt;&lt; &quot; + (&quot; &lt;&lt; i &lt;&lt; &quot; + 0.5) * &quot; &lt;&lt; dx &lt;&lt; &quot; = &quot; &lt;&lt; x &lt;&lt; &quot;. // the middle point of the ith partition of [a,b].&quot;;
+            file &lt;&lt; &quot;\n\nx = a + (i + 0.5) * dx = &quot; &lt;&lt; a &lt;&lt; &quot; + (&quot; &lt;&lt; i &lt;&lt; &quot; + 0.5) * &quot; &lt;&lt; dx &lt;&lt; &quot; = &quot; &lt;&lt; x &lt;&lt; &quot;. // the middle point of the ith partition of [a,b].&quot;;
+        }
+
+        /**
+         * Print an error message to the console window if 
+         * method is not either &#039;left&#039;, &#039;right&#039;, or &#039;midpoint&#039;
+         * and exit the function by returning the value 0.0.
+         */
+        else 
+        {
+            std::cout &lt;&lt; &quot;\n\nInvalid method. Use &#039;left&#039;, &#039;right&#039;, or &#039;midpoint&#039;.&quot;;
+            return 0.0;
+        }
+
+        // Add the area of the current rectangle to the running total sum.
+        sum += func(x) * dx; 
+
+        // Print the right-hand value of the above equation to the command line terminal and to the output file stream.
+        std::cout &lt;&lt; &quot;\n\nrectangle_area_x = func(x) * dx = &quot; &lt;&lt; func(x) &lt;&lt; &quot; * &quot; &lt;&lt; dx &lt;&lt; &quot; = &quot; &lt;&lt; (func(x) * dx) &lt;&lt; &quot;. // area of the ith rectangle&quot;;
+        file &lt;&lt; &quot;\n\nrectangle_area_x = func(x) * dx = &quot; &lt;&lt; func(x) &lt;&lt; &quot; * &quot; &lt;&lt; dx &lt;&lt; &quot; = &quot; &lt;&lt; (func(x) * dx) &lt;&lt; &quot;. // area of the ith rectangle&quot;;
+
+        // Print the running total obtained by adding the area of the ith rectangle to the value stored in the variable named sum to the command line terminal and to the output file stream.
+        std::cout &lt;&lt; &quot;\n\nsum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).&quot;;
+        std::cout &lt;&lt; &quot;\n\nsum = &quot; &lt;&lt; sum &lt;&lt; &quot;. // the current value stored in the variable named sum&quot;;
+        file &lt;&lt; &quot;\n\nsum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).&quot;;
+        file &lt;&lt; &quot;\n\nsum = &quot; &lt;&lt; sum &lt;&lt; &quot;. // the current value stored in the variable named sum&quot;;
+
+        // Print a horizontal divider line to the command line terminal and to the file output stream.
+        std::cout &lt;&lt; &quot;\n\n~~~~~~~~~~~~~~&quot;;
+        file &lt;&lt; &quot;\n\n~~~~~~~~~~~~~~&quot;;
+    }
+
+    // Return the Reimann sum obtained by adding each of the n rectangle areas.
+    return sum;
+}
+
+/**
+ * This function displays a list of single-variable algebraic functions
+ * on the command line terminal and in the output file stream and
+ * prompts the program user to input an option number which corresponds
+ * with exactly one of the aforementioned functions. 
+ * 
+ * After the user enters some value, the corresponding Function type
+ * object is returned.
+ */
+Function selectFunctionFromListOfFunctions(std::ofstream &amp; file)
+{
+    // example function: f(x) = x^2
+    Function func_0 = [](double x) { return x * x; };
+
+    // example function: f(x) = x^3
+    Function func_1 = [](double x) { return x * x * x; };
+
+    // example function: f(x) = sin(x)
+    Function func_2 = [](double x) { return sin(x); };
+
+    // example function: f(x) = cos(x)
+    Function func_3 = [](double x) { return cos(x); };
+
+    // example function: f(x) = sqrt(x)
+    Function func_4 = [](double x) { return sqrt(x); };
+
+    // example function: f(x) = 2x + 3
+    Function func_5 = [](double x) { return 2 * x + 3; };
+
+    // Initialize option to represent 0 (which is the associated with the first function in the above list).
+    int option = 0;
+
+    // Print menu options and the instruction to input an option number to the command line terminal.
+    std::cout &lt;&lt; &quot;\n\nEnter the number which corresponds with one of the following functions:&quot;;
+    std::cout &lt; f(x) = x^2";
+    std::cout &lt; f(x) = x^3";
+    std::cout &lt; f(x) = sin(x)";
+    std::cout &lt; f(x) = cos(x)";
+    std::cout &lt; f(x) = sqrt(x)";
+    std::cout &lt; f(x) = 2x + 3";
+    std::cout &lt;&lt; &quot;\n\nEnter Option Here: &quot;;
+
+    // Print menu options and the instruction to input an option number to the file output stream.
+    file &lt;&lt; &quot;\n\nEnter the number which corresponds with one of the following functions:&quot;;
+    file &lt; f(x) = x^2";
+    file &lt; f(x) = x^3";
+    file &lt; f(x) = sin(x)";
+    file &lt; f(x) = cos(x)";
+    file &lt; f(x) = sqrt(x)";
+    file &lt; f(x) = 2x + 3";
+    file &lt;&gt; option;
+
+    // Print "The value which was entered for option is {option}." to the command line terminal.
+    std::cout &lt;&lt; &quot;\nThe value which was entered for option is &quot; &lt;&lt; option &lt;&lt; &quot;.&quot;;
+
+    // Print &quot;The value which was entered for option is {option}.&quot; to the file output stream.
+    file &lt;&lt; &quot;\n\nThe value which was entered for option is &quot; &lt;&lt; option &lt;&lt; &quot;.&quot;;
+
+    /**
+     * If option is smaller than 0 or if option is larger than 5, set option to 0
+     * and print a message stating that fact to the command line terminal and to the output file stream.
+     */
+    if ((option  5))
+    {
+        option = 0;
+        std::cout &lt;&lt; &quot;\n\noption was set to 0 by default due to the fact that the value input by the user was not recognized.&quot;;
+        file &lt;&lt; &quot;\n\noption was set to 0 by default due to the fact that the value input by the user was not recognized.&quot;;
+    }
+
+    /**
+     * Print a message about which function was selected by the user to the command line terminal and to the file output stream 
+     * and return that selected function&#039;s corresponding Function type object.
+     */
+    if (option == 0) 
+    {
+        std::cout &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = x^2.&quot;;
+        file &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = x^2.&quot;;
+        return func_0;
+    }
+    if (option == 1) 
+    {
+        std::cout &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = x^3.&quot;;
+        file &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = x^3.&quot;;
+        return func_1;
+    }
+    if (option == 2) 
+    {
+        std::cout &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = sin(x).&quot;;
+        file &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = sin(x).&quot;;
+        return func_2;
+    }
+    if (option == 3) 
+    {
+        std::cout &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = cos(x).&quot;;
+        file &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = cos(x).&quot;;
+        return func_3;
+    }
+    if (option == 4) 
+    {
+        std::cout &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = sqrt(x).&quot;;
+        file &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = sqrt(x).&quot;;
+        return func_4;
+    }
+    if (option == 5) 
+    {
+        std::cout &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = 2x + 3.&quot;;
+        file &lt;&lt; &quot;\n\nThe single-variable function which was selected from the list of such functions is f(x) = 2x + 3.&quot;;
+        return func_5;
+    }
+    return func_0;
+}
+
+/**
+ * This function prompts the user to input three numerical values related to partitioning the x-axis of a Cartesian grid
+ * for the purpose of using each those partitions to instantiate a rectangle whose width is the partition length
+ * and whose height is where that rectangle&#039;s top left corner intersects with the graph of some single-variable function y = f(x).
+ * 
+ * a represents the left-most point of the aforementioned x-axis partition.
+ * 
+ * b represents the right-most point of the aforementioned x-axis partition.
+ * 
+ * n represents the number of equally-sized partitions to divide the x-axis partition, [a,b], into.
+ * 
+ * If an invalid input to this function is detected, then this function will return a Parameters instance with default values as follows:
+ * 
+ * { a : 0.0, b : 1.0, n : 10 }.
+ */
+Parameters selectPartitioningValues(std::ofstream &amp; file)
+{
+    // Define two double-type variables for storing values which represent the end points of an x-axis interval.
+    double a = 0.0, b = 0.0;
+
+    // Define one int-type variable for storing the number of equally sized partitions to divide the aforementioned x-axis interval into.
+    int n = 1;
+
+    // Define a read-only default Parameters value to use as a reference to replace invalid user-input values with correct values.
+    const Parameters default_params = { 0.0, 1.0, 10 };
+
+    /*****************************/
+    /* Get User Input: a         */
+    /*****************************/
+
+    // Print a message to the command line terminal which prompts the user to input a value to store in the variable named a.
+    std::cout &lt;&lt; &quot;\n\nEnter a value to store in double-type variable a (which represents the left end of the x-axis interval): &quot;;
+
+    // Print a message to the output file stream which prompts the user to input a value to store in the variable named a.
+    file &lt;&gt; a;
+
+    // Print "The value which was entered for a is {a}." to the command line terminal.
+    std::cout &lt;&lt; &quot;\nThe value which was entered for a is &quot; &lt;&lt; a &lt;&lt; &quot;.&quot;;
+
+    // Print &quot;The value which was entered for a is {a}.&quot; to the file output stream.
+    file &lt;&lt; &quot;\n\nThe value which was entered for a is &quot; &lt;&lt; a &lt;&lt; &quot;.&quot;;
+
+    /**
+     * Print an error message to the command line terminal and to the output file stream if
+     * a is smaller than MINIMUM_a or if
+     * a is larger than MAXIMUM_a
+     * and return a default Parameters instance.
+     */
+    if ((a  MAXIMUM_a))
+    {
+        std::cout &lt;&lt; &quot;\n\nInvalid interval end-point. a is required to be within range [&quot; &lt;&lt; MINIMUM_a &lt;&lt; &quot;,&quot; &lt;&lt; MAXIMUM_a &lt;&lt; &quot;].&quot;;
+        std::cout &lt;&lt; &quot;\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.&quot;;
+        file &lt;&lt; &quot;\n\nInvalid interval end-point. a is required to be within range [&quot; &lt;&lt; MINIMUM_a &lt;&lt; &quot;,&quot; &lt;&lt; MAXIMUM_a &lt;&lt; &quot;].&quot;;
+        file &lt;&lt; &quot;\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.&quot;;
+        return default_params;
+    }
+
+    /*****************************/
+    /* Get User Input: b         */
+    /*****************************/
+
+    // Print a message to the command line terminal which prompts the user to input a value to store in the variable named b.
+    std::cout &lt;&lt; &quot;\n\nEnter a value to store in double-type variable b (which represents the right end of the x-axis interval): &quot;;
+
+    // Print a message to the output file stream which prompts the user to input a value to store in the variable named b.
+    file &lt;&gt; b;
+
+    // Print "The value which was entered for b is {b}." to the command line terminal.
+    std::cout &lt;&lt; &quot;\nThe value which was entered for b is &quot; &lt;&lt; b &lt;&lt; &quot;.&quot;;
+
+    // Print &quot;The value which was entered for b is {b}.&quot; to the file output stream.
+    file &lt;&lt; &quot;\n\nThe value which was entered for b is &quot; &lt;&lt; b &lt;&lt; &quot;.&quot;;
+
+    /**
+     * Print an error message to the command line terminal and to the output file stream if
+     * b is smaller than or equal to a or if
+     * a is larger than MAXIMUM_a
+     * and return a default Parameters instance.
+     */
+    if ((b  MAXIMUM_a))
+    {
+        std::cout &lt;&lt; &quot;\n\nInvalid interval end-point. b is required to be within range (&quot; &lt;&lt; a &lt;&lt; &quot;,&quot; &lt;&lt; MAXIMUM_a &lt;&lt; &quot;].&quot;;
+        std::cout &lt;&lt; &quot;\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.&quot;;
+        file &lt;&lt; &quot;\n\nInvalid interval end-point. b is required to be within range (&quot; &lt;&lt; a &lt;&lt; &quot;,&quot; &lt;&lt; MAXIMUM_a &lt;&lt; &quot;].&quot;;
+        file &lt;&lt; &quot;\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.&quot;;
+        return default_params;
+    }
+
+    /*****************************/
+    /* Get User Input: n         */
+    /*****************************/
+
+    // Print a message to the command line terminal which prompts the user to input a value to store in the variable named n.
+    std::cout &lt;&lt; &quot;\n\nEnter a value to store in int-type variable n (which represents the number of equally-sized partitions to divide x-axis interval [a,b] into): &quot;;
+
+    // Print a message to the output file stream which prompts the user to input a value to store in the variable named n.
+    file &lt;&gt; n;
+
+    // Print "The value which was entered for n is {n}." to the command line terminal.
+    std::cout &lt;&lt; &quot;\nThe value which was entered for n is &quot; &lt;&lt; n &lt;&lt; &quot;.&quot;;
+
+    // Print &quot;The value which was entered for n is {n}.&quot; to the file output stream.
+    file &lt;&lt; &quot;\n\nThe value which was entered for n is &quot; &lt;&lt; n &lt;&lt; &quot;.&quot;;
+
+    /**
+     * Print an error message to the command line terminal and to the output file stream if
+     * n is smaller than one or if
+     * n is larger than MAXIMUM_a
+     * and return a default Parameters instance.
+     */
+    if ((n  MAXIMUM_a))
+    {
+        std::cout &lt;&lt; &quot;\n\nInvalid partition number. n is required to be a natural number within range [1,&quot; &lt;&lt; MAXIMUM_a &lt;&lt; &quot;].&quot;;
+        std::cout &lt;&lt; &quot;\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.&quot;;
+        file &lt;&lt; &quot;\n\nInvalid partition number. n is required to be a natural number within range [1,&quot; &lt;&lt; MAXIMUM_a &lt;&lt; &quot;].&quot;;
+        file &lt;&lt; &quot;\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.&quot;;
+        return default_params;
+    }
+
+    /**
+     * Print a message about which x-axis interval and partition number were selected 
+     * by the user to the command line terminal and to the file output stream.
+     */
+    std::cout &lt;&lt; &quot;\n\nThe x-axis interval which was selected to partition is [&quot; &lt;&lt; a &lt;&lt; &quot;,&quot; &lt;&lt; b &lt;&lt; &quot;].&quot;;
+    std::cout &lt;&lt; &quot;\n\nThe selected number of equally-sized partitions to divide that interval into is &quot; &lt;&lt; n &lt;&lt; &quot;.&quot;;
+    file &lt;&lt; &quot;\n\nThe x-axis interval which was selected to partition is [&quot; &lt;&lt; a &lt;&lt; &quot;,&quot; &lt;&lt; b &lt;&lt; &quot;].&quot;;
+    file &lt;&lt; &quot;\n\nThe selected number of equally-sized partitions to divide that interval into is &quot; &lt;&lt; n &lt;&lt; &quot;.&quot;;
+
+    // Return a struct whose data type is Parameters and whose data attributes are the values which the user entered during a runtime instance of this function.
+    return {a,b,n};
+}
+
+/**
+ * This function displays a list of Reimann Sum partitioning methods
+ * on the command line terminal and in the output file stream and
+ * prompts the program user to input an option number which corresponds
+ * with exactly one of the aforementioned methods. 
+ * 
+ * After the user enters some value, the corresponding string type
+ * object is returned.
+ */
+std::string selectRectangleConstructionMethod(std::ofstream &amp; file)
+{
+    /**
+     * The following three read-only string variables each refer to a specific method of visualizing n rectangles 
+     * whose widths are the length of each one of the n partitions of [a,b] and 
+     * whose heights are f(xi) where xi is some point within [a,b].
+     * 
+     * &quot;left&quot; refers to the method of using the left end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles.
+     * 
+     * &quot;right&quot; refers to the method of using the right end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles.
+     * 
+     * &quot;midpoint&quot; refers to the method of using the middle point of each of the n partitions of [a,b] to set the height of each of the n rectangles.
+     */
+    const std::string method_0 = &quot;left&quot;;
+    const std::string method_1 = &quot;right&quot;;
+    const std::string method_2 = &quot;midpoint&quot;;
+
+    // Initialize option to represent 0 (which is the associated with the first method in the above list).
+    int option = 0;
+
+    // Print menu options and the instruction to input an option number to the command line terminal.
+    std::cout &lt;&lt; &quot;\n\nEnter the number which corresponds with one of the following rectangle construction methods:&quot;;
+    std::cout &lt; \"left\"";
+    std::cout &lt; \"right\"";    
+    std::cout &lt; \"midpoint\"";
+    std::cout &lt;&lt; &quot;\n\nEnter Option Here: &quot;;
+
+    // Print menu options and the instruction to input an option number to the file output stream.
+    file &lt;&lt; &quot;\n\nEnter the number which corresponds with one of the following rectangle construction methods:&quot;;
+    file &lt; \"left\"";
+    file &lt; \"right\"";    
+    file &lt; \"midpoint\"";
+    file &lt;&gt; option;
+
+    // Print "The value which was entered for option is {option}." to the command line terminal.
+    std::cout &lt;&lt; &quot;\nThe value which was entered for option is &quot; &lt;&lt; option &lt;&lt; &quot;.&quot;;
+
+    // Print &quot;The value which was entered for option is {option}.&quot; to the file output stream.
+    file &lt;&lt; &quot;\n\nThe value which was entered for option is &quot; &lt;&lt; option &lt;&lt; &quot;.&quot;;
+
+    /**
+     * If option is smaller than 0 or if option is larger than 2, set option to 0
+     * and print a message stating that fact to the command line terminal and to the output file stream.
+     */
+    if ((option  2))
+    {
+        option = 0;
+        std::cout &lt;&lt; &quot;\n\noption was set to 0 by default due to the fact that the value input by the user was not recognized.&quot;;
+        file &lt;&lt; &quot;\n\noption was set to 0 by default due to the fact that the value input by the user was not recognized.&quot;;
+    }
+
+    /**
+     * Print a message about which function was selected by the user to the command line terminal and to the file output stream 
+     * and return that selected method&#039;s corresponding string type object.
+     */
+    if (option == 0) 
+    {
+        std::cout &lt;&lt; &quot;\n\nThe rectangle construction method which was selected from the list of such methods is \&quot;left\&quot; (i.e. using the left end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles).&quot;;
+        file &lt;&lt; &quot;\n\nThe rectangle construction method which was selected from the list of such methods is \&quot;left\&quot; (i.e. using the left end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles).&quot;;
+        return method_0;
+    }
+    if (option == 1) 
+    {
+        std::cout &lt;&lt; &quot;\n\nThe rectangle construction method which was selected from the list of such methods is \&quot;right\&quot; (i.e. using the right end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles).&quot;;
+        file &lt;&lt; &quot;\n\nThe rectangle construction method which was selected from the list of such methods is \&quot;right\&quot; (i.e. using the right end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles).&quot;;
+        return method_1;
+    }
+    if (option == 2) 
+    {
+        std::cout &lt;&lt; &quot;\n\nThe rectangle construction method which was selected from the list of such methods is \&quot;midpoint\&quot; (i.e. using the middle point of each of the n partitions of [a,b] to set the height of each of the n rectangles).&quot;;
+        file &lt;&lt; &quot;\n\nThe rectangle construction method which was selected from the list of such methods is \&quot;midpoint\&quot; (i.e. using the middle point of each of the n partitions of [a,b] to set the height of each of the n rectangles).&quot;;
+        return method_2;
+    }
+    return method_0;
+}
+</pre>
+<hr>
+<p><strong>SAMPLE_PROGRAM_OUTPUT</strong></p>
+<hr>
+<p>The text in the preformatted text box below was generated by one use case of the C++ program featured in this <a style="background:#ff9000;color:#000000" href="https://en.wikipedia.org/wiki/Computer_programming" target="_blank" rel="noopener">computer programming</a> tutorial web page.</p>
+<p>plain-text_file: <a style="background:#000000;color:#ff9000" href="https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/reimann_sum_output.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/reimann_sum_output.txt</a></p>
+<hr>
+<pre>
+--------------------------------
+Start Of Program
+--------------------------------
+
+Enter the number which corresponds with one of the following functions:
+
+0 --&gt; f(x) = x^2
+
+1 --&gt; f(x) = x^3
+
+2 --&gt; f(x) = sin(x)
+
+3 --&gt; f(x) = cos(x)
+
+4 --&gt; f(x) = sqrt(x)
+
+5 --&gt; f(x) = 2x + 3
+
+Enter Option Here: 
+
+The value which was entered for option is 1.
+
+The single-variable function which was selected from the list of such functions is f(x) = x^3.
+
+--------------------------------
+
+Enter a value to store in double-type variable a (which represents the left end of the x-axis interval): 
+
+The value which was entered for a is 0.
+
+Enter a value to store in double-type variable b (which represents the right end of the x-axis interval): 
+
+The value which was entered for b is 10.
+
+Enter a value to store in int-type variable n (which represents the number of equally-sized partitions to divide x-axis interval [a,b] into): 
+
+The value which was entered for n is 10.
+
+The x-axis interval which was selected to partition is [0,10].
+
+The selected number of equally-sized partitions to divide that interval into is 10.
+
+--------------------------------
+
+Enter the number which corresponds with one of the following rectangle construction methods:
+
+0 --&gt; "left"
+
+1 --&gt; "right"
+
+2 --&gt; "midpoint"
+
+Enter Option Here: 
+
+The value which was entered for option is 0.
+
+The rectangle construction method which was selected from the list of such methods is "left" (i.e. using the left end-point of each of the n partitions of [a,b] to set the height of each of the n rectangles).
+
+--------------------------------
+
+dx = (b - a) / n = (10 - 0) / 10 = 1. // the length of each of the n equally-sized partitions of x-axis interval, [a,b]
+
+~~~~~~~~~~~~~~
+
+i = 0. // current iteration of the for loop (of 10 iterations)
+
+x = a + i * dx = 0 + 0 * 1 = 0. // the left end-point of the ith partition of [a,b].
+
+rectangle_area_x = func(x) * dx = 0 * 1 = 0. // area of the ith rectangle
+
+sum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).
+
+sum = 0. // the current value stored in the variable named sum
+
+~~~~~~~~~~~~~~
+
+i = 1. // current iteration of the for loop (of 10 iterations)
+
+x = a + i * dx = 0 + 1 * 1 = 1. // the left end-point of the ith partition of [a,b].
+
+rectangle_area_x = func(x) * dx = 1 * 1 = 1. // area of the ith rectangle
+
+sum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).
+
+sum = 1. // the current value stored in the variable named sum
+
+~~~~~~~~~~~~~~
+
+i = 2. // current iteration of the for loop (of 10 iterations)
+
+x = a + i * dx = 0 + 2 * 1 = 2. // the left end-point of the ith partition of [a,b].
+
+rectangle_area_x = func(x) * dx = 8 * 1 = 8. // area of the ith rectangle
+
+sum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).
+
+sum = 9. // the current value stored in the variable named sum
+
+~~~~~~~~~~~~~~
+
+i = 3. // current iteration of the for loop (of 10 iterations)
+
+x = a + i * dx = 0 + 3 * 1 = 3. // the left end-point of the ith partition of [a,b].
+
+rectangle_area_x = func(x) * dx = 27 * 1 = 27. // area of the ith rectangle
+
+sum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).
+
+sum = 36. // the current value stored in the variable named sum
+
+~~~~~~~~~~~~~~
+
+i = 4. // current iteration of the for loop (of 10 iterations)
+
+x = a + i * dx = 0 + 4 * 1 = 4. // the left end-point of the ith partition of [a,b].
+
+rectangle_area_x = func(x) * dx = 64 * 1 = 64. // area of the ith rectangle
+
+sum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).
+
+sum = 100. // the current value stored in the variable named sum
+
+~~~~~~~~~~~~~~
+
+i = 5. // current iteration of the for loop (of 10 iterations)
+
+x = a + i * dx = 0 + 5 * 1 = 5. // the left end-point of the ith partition of [a,b].
+
+rectangle_area_x = func(x) * dx = 125 * 1 = 125. // area of the ith rectangle
+
+sum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).
+
+sum = 225. // the current value stored in the variable named sum
+
+~~~~~~~~~~~~~~
+
+i = 6. // current iteration of the for loop (of 10 iterations)
+
+x = a + i * dx = 0 + 6 * 1 = 6. // the left end-point of the ith partition of [a,b].
+
+rectangle_area_x = func(x) * dx = 216 * 1 = 216. // area of the ith rectangle
+
+sum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).
+
+sum = 441. // the current value stored in the variable named sum
+
+~~~~~~~~~~~~~~
+
+i = 7. // current iteration of the for loop (of 10 iterations)
+
+x = a + i * dx = 0 + 7 * 1 = 7. // the left end-point of the ith partition of [a,b].
+
+rectangle_area_x = func(x) * dx = 343 * 1 = 343. // area of the ith rectangle
+
+sum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).
+
+sum = 784. // the current value stored in the variable named sum
+
+~~~~~~~~~~~~~~
+
+i = 8. // current iteration of the for loop (of 10 iterations)
+
+x = a + i * dx = 0 + 8 * 1 = 8. // the left end-point of the ith partition of [a,b].
+
+rectangle_area_x = func(x) * dx = 512 * 1 = 512. // area of the ith rectangle
+
+sum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).
+
+sum = 1296. // the current value stored in the variable named sum
+
+~~~~~~~~~~~~~~
+
+i = 9. // current iteration of the for loop (of 10 iterations)
+
+x = a + i * dx = 0 + 9 * 1 = 9. // the left end-point of the ith partition of [a,b].
+
+rectangle_area_x = func(x) * dx = 729 * 1 = 729. // area of the ith rectangle
+
+sum += rectangle_x; // Add rectangle_x to sum and store the result in sum (in the C++ program).
+
+sum = 2025. // the current value stored in the variable named sum
+
+~~~~~~~~~~~~~~
+
+--------------------------------
+End Of Program
+--------------------------------
+</pre>
+<hr>
+<p>This web page was last updated on 03_AUGUST_2024. The content displayed on this web page is licensed as <a style="background:#000000;color:#ff9000" href="https://karlinaobject.wordpress.com/public_domain/" target="_blank" rel="noopener">PUBLIC_DOMAIN</a> intellectual property.</p>
+<hr>
