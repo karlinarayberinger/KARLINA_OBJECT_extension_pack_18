@@ -11,6 +11,12 @@
 #include <fstream> // file input, file output, file open, file close
 #include <cmath> // sine function (sin(x)), cosine function (cos(x)), square root function (sqrt(x))
 #include <functional> // define custom Function type
+#define MINIMUM_a -999 // constant which represents the minimum a value
+#define MAXIMUM_a 999 // constant which represents the maximum a value
+#define MINIMUM_b -999 // constant which represents the minimum b value
+#define MAXIMUM_b 999 // constant which represents the maximum b value
+#define MINIMUM_n 1 // constant which represents the minimum n value
+#define MAXIMUM_n 999 // constant which represents the maximum n value
 
 // Define the data type for an object which represents a single variable function.
 using Function = std::function<double(double)>;
@@ -136,6 +142,30 @@ double computeRiemannSum(Function func, double a, double b, int n, const std::st
 
     /**
      * Print an error message to the console window if
+     * a is smaller than MINIMUM_a or if
+     * a is larger than MAXIMUM_a
+     * and exit the function by returning zero.
+     */
+    if ((a < MINIMUM_a) || (a > MAXIMUM_a))
+    {
+        std::cout << "\n\nInvalid interval end-point. a is required to be within range [" << MINIMUM_a << "," << MAXIMUM_a << "].";
+        return 0.0;
+    }
+
+    /**
+     * Print an error message to the console window if
+     * b is smaller than MINIMUM_b or if
+     * b is larger than MAXIMUM_b
+     * and exit the function by returning zero.
+     */
+    if ((b < MINIMUM_b) || (b > MAXIMUM_b))
+    {
+        std::cout << "\n\nInvalid interval end-point. b is required to be within range [" << MINIMUM_b << "," << MAXIMUM_b << "].";
+        return 0.0;
+    }
+
+    /**
+     * Print an error message to the console window if
      * b is smaller than or equal to a
      * and exit the function by returning zero.
      */
@@ -147,10 +177,10 @@ double computeRiemannSum(Function func, double a, double b, int n, const std::st
 
     /**
      * Print an error message to the console window if
-     * n is smaller than one
+     * n is smaller than one (or larger than MAXIMUM_n)
      * and exit the function by returning zero.
      */
-    if (n < 1)
+    if ((n < MINIMUM_n) || (n > MAXIMUM_n))
     {
         std::cout << "Invalid partition number. n is required to represent a natural number.";
         return 0.0;
@@ -319,14 +349,21 @@ Function selectFunctionFromListOfFunctions(std::ofstream & file)
     return func_0;
 }
 
-//...
+/**
+ * If an invalid input to this function is detected, then this function will return a Parameters instance with default values as follows:
+ * 
+ * { a : 0.0, b : 1.0, n : 10 }.
+ */
 Parameters selectPartitioningValues(std::ofstream & file)
 {
-    // Declare two double-type variables for storing values which represent the end points of an x-axis interval.
+    // Define two double-type variables for storing values which represent the end points of an x-axis interval.
     double a = 0.0, b = 0.0;
 
-    // Declare one int-type variable for storing the number of equally sized partitions to divide the aforementioned x-axis interval into.
+    // Define one int-type variable for storing the number of equally sized partitions to divide the aforementioned x-axis interval into.
     int n = 1;
+
+    // Define a read-only default Parameters value to use as a reference to replace invalid user-input values with correct values.
+    const Parameters default_params = { 0.0, 1.0, 10 };
 
     // Print a message to the command line terminal which prompts the user to input a value to store in the variable named a.
     std::cout << "\n\nEnter a value to store in double-type variable a (which represents the left end of the x-axis interval): ";
@@ -346,13 +383,29 @@ Parameters selectPartitioningValues(std::ofstream & file)
     // Print "The value which was entered for a is {a}." to the file output stream.
     file << "\n\nThe value which was entered for a is " << a << ".";
 
+    /**
+     * Print an error message to the command line terminal and to the output file stream if
+     * a is smaller than MINIMUM_a or if
+     * a is larger than MAXIMUM_a
+     * and set a to default a value in default_params.
+     */
+    if ((a < MINIMUM_a) || (a > MAXIMUM_a))
+    {
+        a = default_params.a;
+        std::cout << "\n\nInvalid interval end-point. a is required to be within range [" << MINIMUM_a << "," << MAXIMUM_a << "].";
+        std::cout << "\n\na has been set to " << default_params.a << " instead of the value input by the user.";
+        file << "\n\nInvalid interval end-point. a is required to be within range [" << MINIMUM_a << "," << MAXIMUM_a << "].";
+        file << "\n\na has been set to " << default_params.a << " instead of the value input by the user.";
+    }
+
+
     //...
 
     Parameters parameters;
-
+/*
     parameters.a = a;
     parameters.b = b;
-    parameters.n = n;
+    parameters.n = n;*/
 
     return parameters;
 }
