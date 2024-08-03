@@ -158,9 +158,9 @@ double computeRiemannSum(Function func, double a, double b, int n, const std::st
      * b is larger than MAXIMUM_b
      * and exit the function by returning zero.
      */
-    if ((b < MINIMUM_b) || (b > MAXIMUM_b))
+    if ((b < MINIMUM_a) || (b > MAXIMUM_a))
     {
-        std::cout << "\n\nInvalid interval end-point. b is required to be within range [" << MINIMUM_b << "," << MAXIMUM_b << "].";
+        std::cout << "\n\nInvalid interval end-point. b is required to be within range [" << MINIMUM_a << "," << MAXIMUM_a << "].";
         return 0.0;
     }
 
@@ -406,7 +406,38 @@ Parameters selectPartitioningValues(std::ofstream & file)
     /* Get User Input: b         */
     /*****************************/
 
-    // the rolly pollies be rollin
+    // Print a message to the command line terminal which prompts the user to input a value to store in the variable named b.
+    std::cout << "\n\nEnter a value to store in double-type variable b (which represents the right end of the x-axis interval): ";
+
+    // Print a message to the output file stream which prompts the user to input a value to store in the variable named b.
+    file << "\n\nEnter a value to store in double-type variable b (which represents the right end of the x-axis interval): ";
+
+    /**
+     * Scan the command line terminal for the most recent keyboard input value. 
+     * Store that value in the variable named a.
+     */
+    std::cin >> b;
+
+    // Print "The value which was entered for b is {b}." to the command line terminal.
+    std::cout << "\nThe value which was entered for b is " << b << ".";
+
+    // Print "The value which was entered for b is {b}." to the file output stream.
+    file << "\n\nThe value which was entered for b is " << b << ".";
+
+    /**
+     * Print an error message to the command line terminal and to the output file stream if
+     * b is smaller than or equal to a or if
+     * a is larger than MAXIMUM_a
+     * and return a default Parameters instance.
+     */
+    if ((b <= a) || (b > MAXIMUM_a))
+    {
+        std::cout << "\n\nInvalid interval end-point. b is required to be within range (" << a << "," << MAXIMUM_a << "].";
+        std::cout << "\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.";
+        file << "\n\nInvalid interval end-point. b is required to be within range (" << a << "," << MAXIMUM_a << "].";
+        file << "\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.";
+        return default_params;
+    }
 
    //...
 
