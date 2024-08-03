@@ -118,7 +118,7 @@ int main() {
     double sum = computeRiemannSum(func, parameters.a, parameters.b, parameters.n, method, file);
 
     // Print the result of the above function execution to the command line terminal and to the output file stream.
-    std::cout << "The Reimann Sum obtained by this program runtime instance is " << sum << ".";
+    std::cout << "\n\nThe Reimann Sum obtained by this program runtime instance is " << sum << ".";
 
     // Print a closing message to the command line terminal.
     std::cout << "\n\n--------------------------------";
