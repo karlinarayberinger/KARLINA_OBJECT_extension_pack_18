@@ -13,8 +13,8 @@
 #include <functional> // define custom Function type
 #define MINIMUM_a -999 // constant which represents the minimum a value
 #define MAXIMUM_a 999 // constant which represents the maximum a value
-#define MINIMUM_b -999 // constant which represents the minimum b value
-#define MAXIMUM_b 999 // constant which represents the maximum b value
+// #define MINIMUM_b -999 // constant which represents the minimum b value
+// #define MAXIMUM_b 999 // constant which represents the maximum b value
 #define MINIMUM_n 1 // constant which represents the minimum n value
 #define MAXIMUM_n 999 // constant which represents the maximum n value
 
@@ -365,6 +365,10 @@ Parameters selectPartitioningValues(std::ofstream & file)
     // Define a read-only default Parameters value to use as a reference to replace invalid user-input values with correct values.
     const Parameters default_params = { 0.0, 1.0, 10 };
 
+    /*****************************/
+    /* Get User Input: a         */
+    /*****************************/
+
     // Print a message to the command line terminal which prompts the user to input a value to store in the variable named a.
     std::cout << "\n\nEnter a value to store in double-type variable a (which represents the left end of the x-axis interval): ";
 
@@ -373,7 +377,7 @@ Parameters selectPartitioningValues(std::ofstream & file)
 
     /**
      * Scan the command line terminal for the most recent keyboard input value. 
-     * Store that value in the variable named a of the struct named parameters.
+     * Store that value in the variable named a.
      */
     std::cin >> a;
 
@@ -387,19 +391,24 @@ Parameters selectPartitioningValues(std::ofstream & file)
      * Print an error message to the command line terminal and to the output file stream if
      * a is smaller than MINIMUM_a or if
      * a is larger than MAXIMUM_a
-     * and set a to default a value in default_params.
+     * and return a default Parameters instance.
      */
     if ((a < MINIMUM_a) || (a > MAXIMUM_a))
     {
-        a = default_params.a;
         std::cout << "\n\nInvalid interval end-point. a is required to be within range [" << MINIMUM_a << "," << MAXIMUM_a << "].";
-        std::cout << "\n\na has been set to " << default_params.a << " instead of the value input by the user.";
+        std::cout << "\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.";
         file << "\n\nInvalid interval end-point. a is required to be within range [" << MINIMUM_a << "," << MAXIMUM_a << "].";
-        file << "\n\na has been set to " << default_params.a << " instead of the value input by the user.";
+        file << "\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.";
+        return default_params;
     }
 
+    /*****************************/
+    /* Get User Input: b         */
+    /*****************************/
 
-    //...
+    // the rolly pollies be rollin
+
+   //...
 
     Parameters parameters;
 /*
