@@ -15,8 +15,8 @@
 #define MAXIMUM_a 999 // constant which represents the maximum a value
 // #define MINIMUM_b -999 // constant which represents the minimum b value
 // #define MAXIMUM_b 999 // constant which represents the maximum b value
-#define MINIMUM_n 1 // constant which represents the minimum n value
-#define MAXIMUM_n 999 // constant which represents the maximum n value
+// #define MINIMUM_n 1 // constant which represents the minimum n value
+// #define MAXIMUM_n 999 // constant which represents the maximum n value
 
 // Define the data type for an object which represents a single variable function.
 using Function = std::function<double(double)>;
@@ -182,7 +182,7 @@ double computeRiemannSum(Function func, double a, double b, int n, const std::st
      */
     if ((n < MINIMUM_n) || (n > MAXIMUM_n))
     {
-        std::cout << "Invalid partition number. n is required to represent a natural number.";
+        std::cout << "Invalid partition number. n is required to represent a natural number no larger than.";
         return 0.0;
     }
 
@@ -350,6 +350,16 @@ Function selectFunctionFromListOfFunctions(std::ofstream & file)
 }
 
 /**
+ * This function prompts the user to input three numerical values related to partitioning the x-axis of a Cartesian grid
+ * for the purpose of using each those partitions to instantiate a rectangle whose width is the partition length
+ * and whose height is where that rectangle's top left corner intersects with the graph of some single-variable function y = f(x).
+ * 
+ * a represents the left-most point of the aforementioned x-axis partition.
+ * 
+ * b represents the right-most point of the aforementioned x-axis partition.
+ * 
+ * n represents the number of equally-sized partitions to divide the x-axis partition, [a,b], into.
+ * 
  * If an invalid input to this function is detected, then this function will return a Parameters instance with default values as follows:
  * 
  * { a : 0.0, b : 1.0, n : 10 }.
@@ -439,8 +449,47 @@ Parameters selectPartitioningValues(std::ofstream & file)
         return default_params;
     }
 
+    /*****************************/
+    /* Get User Input: n         */
+    /*****************************/
+
+    // Print a message to the command line terminal which prompts the user to input a value to store in the variable named n.
+    std::cout << "\n\nEnter a value to store in int-type variable n (which represents the number of equally-sized partitions to divide x-axis interval [a,b] into): ";
+
+    // Print a message to the output file stream which prompts the user to input a value to store in the variable named n.
+    file << "\n\nEnter a value to store in int-type variable n (which represents the number of equally-sized partitions to divide x-axis interval [a,b] into): ";
+
+    /**
+     * Scan the command line terminal for the most recent keyboard input value. 
+     * Store that value in the variable named a.
+     */
+    std::cin >> n;
+
+    // Print "The value which was entered for n is {n}." to the command line terminal.
+    std::cout << "\nThe value which was entered for n is " << n << ".";
+
+    // Print "The value which was entered for n is {n}." to the file output stream.
+    file << "\n\nThe value which was entered for n is " << n << ".";
+
+    /**
+     * Print an error message to the command line terminal and to the output file stream if
+     * n is smaller than one or if
+     * n is larger than MAXIMUM_a
+     * and return a default Parameters instance.
+     */
+    if ((n < 1) || (n > MAXIMUM_a))
+    {
+        std::cout << "\n\nInvalid partition number. n is required to be a natural number within range [1," << MAXIMUM_a << "].";
+        std::cout << "\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.";
+        file << "\n\nInvalid partition number. n is required to be a natural number within range [1," << MAXIMUM_a << "].";
+        file << "\n\nHence, default program values are being used to replace user inputs for the Reimann Sum partitioning parameters.";
+        return default_params;
+    }
+
    //...
 
+    // .. batteries are almost out.,..to the outlets!
+    
     Parameters parameters;
 /*
     parameters.a = a;
