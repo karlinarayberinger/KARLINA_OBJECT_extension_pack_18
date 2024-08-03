@@ -1,7 +1,7 @@
 /**
  * file: reimann_sum.cpp
  * type: plain-text
- * date: 02_AUGUST_2024
+ * date: 03_AUGUST_2024
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -192,8 +192,8 @@ double computeRiemannSum(Function func, double a, double b, int n, const std::st
     dx = (b - a) / n;
 
     // Print the value of dx and the above equation to the command line terminal and to the output file stream.
-    std::cout << "\n\ndx = (b - a) / n = (" << b << " - " << b << ") / " << n << " = " << dx << ". // the length of each of the n equally-sized partitions of x-axis interval, [a,b]";
-    file << "\n\ndx = (b - a) / n = (" << b << " - " << b << ") / " << n << " = " << dx << ". // the length of each of the n equally-sized partitions of x-axis interval, [a,b]";
+    std::cout << "\n\ndx = (b - a) / n = (" << b << " - " << a << ") / " << n << " = " << dx << ". // the length of each of the n equally-sized partitions of x-axis interval, [a,b]";
+    file << "\n\ndx = (b - a) / n = (" << b << " - " << a << ") / " << n << " = " << dx << ". // the length of each of the n equally-sized partitions of x-axis interval, [a,b]";
    
     // Print a horizontal divider line to the command line terminal and to the file output stream.
     std::cout << "\n\n~~~~~~~~~~~~~~";

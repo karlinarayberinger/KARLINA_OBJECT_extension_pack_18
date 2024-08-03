@@ -58,7 +58,7 @@ The rectangle construction method which was selected from the list of such metho
 
 --------------------------------
 
-dx = (b - a) / n = (10 - 10) / 10 = 1. // the length of each of the n equally-sized partitions of x-axis interval, [a,b]
+dx = (b - a) / n = (10 - 0) / 10 = 1. // the length of each of the n equally-sized partitions of x-axis interval, [a,b]
 
 ~~~~~~~~~~~~~~
 
