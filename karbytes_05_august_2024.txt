@@ -1,0 +1,69 @@
+/**
+ * file: karbytes_05_august_2024.txt
+ * type: plain-text
+ * date: 05_AUGUST_2024
+ * author: karbytes
+ * license: PUBLIC_DOMAIN
+ */
+
+The following Uniform Resource Locators each point to exactly one unique media file or web page which is part of the (public domain and World Wide Web hosted) digital files collection named karbytes and which showcase examples of karbytes interacting with artificial intelligence in relatively novel ways (relative to karbytes’ own personal experience interacting with artificial intelligence as of 11:59PM Pacific Standard Time on 04_AUGUST_2024).
+
+* * *
+
+Waymo (Self-Driving Taxi)
+
+* * *
+
+video: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_17/main/waymo_ride_san_francisco_california_06july2024.mp4
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_17/main/waymo_app_testing_06july2024_p0.jpg
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_17/main/waymo_app_testing_06july2024_p1.jpg
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_17/main/waymo_app_testing_06july2024_p2.jpg
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_17/main/waymo_app_testing_06july2024_p3.jpg
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_17/main/waymo_app_testing_06july2024_p4.jpg
+
+* * *
+
+ElevenLabs (Voice Cloning for Text-To-Speech Dictation)
+
+* * *
+
+video: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/elevenlabs_basic_voice_clone_karbytes_03aug2024.mp4
+
+video: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/elevenlabs_creator_voice_clone_karbytes_05aug2024.mp4
+
+video: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/elevenlabs_text_to_speech_generation_05aug2024.MP4
+
+video: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/elevenlabs_creator_voice_clone_karbytes_generated_text_to_speech_output_05aug2024.mp4
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/eleven_labs_voice_cloning_ai_creator_subscription_03august2024.png
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/eleven_labs_voice_cloning_ai_starter_subscription_03august2024.png
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/elevenlabs_creator_voice_clone_karbytes_generated_text_to_speech_output_05aug2024.png
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/elevenlabs_text_to_speech_generations_05aug2024.jpg
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/elevenlabs_voice_samples_upload_05aug2024_p0.jpg
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/elevenlabs_voice_samples_upload_05aug2024_p1.jpg
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/elevenlabs_voice_samples_upload_05aug2024_p2.jpg
+
+* * *
+
+ChatGPT (chatbot sessions and image generation)
+
+* * *
+
+web_page: https://karbytesforlifeblog.wordpress.com/karbytes_26_july_2024/
+
+web_page: https://karbytesforlifeblog.wordpress.com/karbytes_17_july_2024/
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_17/main/chatgpt4o_generate_an_image_of_many_miniature_skulls_piled_together_and_covered_partially_with_watery_mud_made_from_red_dirt_09july2024.png
+
+image: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_14/main/dalle_image_generated_by_chatgpt4o_14may2024.png 
