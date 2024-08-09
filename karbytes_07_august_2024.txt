@@ -1,7 +1,7 @@
 /**
  * file: karbytes_07_august_2024.txt
  * type: plain-text
- * date: 07_AUGUST_2024
+ * date: 09_AUGUST_2024
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -25,58 +25,58 @@ Here is a comprehensive list of known derivations of position, each with its phy
 1. Position (s(t)): The location of an object at a given time.
 
 2. Velocity (v(t)): The rate of change of position with respect to time.
-v(t) = d(s(t))/dt
+v(t) = d(s(t))/(dt)
 
 3. Acceleration (a(t)): The rate of change of velocity with respect to time.
-a(t) = d(v(t))/dt = d^2(f(x))/(dx^2)
+a(t) = d(v(t))/(dt) = d^2(f(x))/((dx)^2)
 
 4. Jerk (j(t)): The rate of change of acceleration with respect to time.
-j(t) = d(a(t))/dt = d^3(f(x))/(dx^3)
+j(t) = d(a(t))/(dt) = d^3(f(x))/((dx)^3)
 
-5. Snap (or Jounce) (sn(t)sn(t)): The rate of change of jerk with respect to time.
-sn(t) = d(j(t))/dt = d^4(f(x))/(dx^4)
+5. Snap (or Jounce) (sn(t)): The rate of change of jerk with respect to time.
+sn(t) = d(j(t))/(dt) = d^4(f(x))/((dx)^4)
 
 6. Crackle (cr(t)): The rate of change of snap with respect to time.
-cr(t) = d(sn(t))/dt = d^5(f(x))/(dx^5)
+cr(t) = d(sn(t))/(dt) = d^5(f(x))/((dx)^5)
 
 7. Pop (p(t)): The rate of change of crackle with respect to time.
-p(t) = d(cr(t))/dt = d^6(f(x))/(dx^6)
+p(t) = d(cr(t))/(dt) = d^6(f(x))/((dx)^6)
 
 8. Lock (l(t)): The rate of change of pop with respect to time.
-l(t) = d(p(t))/dt = d^7(f(x))/(dx^7)
+l(t) = d(p(t))/(dt) = d^7(f(x))/((dx)^7)
 
 9. Drop (d(t)): The rate of change of lock with respect to time.
-d(t) = d(l(t))/dt = d^8(f(x))/(dx^8)
+d(t) = d(l(t))/(dt) = d^8(f(x))/((dx)^8)
 
 10. Shot (sh(t)): The rate of change of drop with respect to time.
-sh(t) = d(d(t))/dt = d^9(f(x))/(dx^9)
+sh(t) = d(d(t))/(dt) = d^9(f(x))/((dx)^9)
 
 11. Put (pt(t)): The rate of change of shot with respect to time.
-pt(t) = d(sh(t))/dt = d^10(f(x))/(dx^10)
+pt(t) = d(sh(t))/(dt) = d^10(f(x))/((dx)^10)
 
 12. Dunt (du(t)): The rate of change of put with respect to time.
-du(t) = d(pt(t))/dt = d^11(f(x))/(dx^11)
+du(t) = d(pt(t))/(dt) = d^11(f(x))/((dx)^11)
 
 13. Brunt (b(t)): The rate of change of dunt with respect to time.
-b(t) = d(du(t))/dt = d^12(f(x))/(dx^12)
+b(t) = d(du(t))/(dt) = d^12(f(x))/((dx)^12)
 
 14. Ruth (ru(t)): The rate of change of brunt with respect to time.
-ru(t) = d(b(t))/dt = d^13(f(x))/(dx^13)
+ru(t) = d(b(t))/(dt) = d^13(f(x))/((dx)^13)
 
 15. Moil (m(t)): The rate of change of ruth with respect to time.
-m(t) = d(ru(t))/dt = d^14(f(x))/(dx^14)
+m(t) = d(ru(t))/(dt) = d^14(f(x))/((dx)^14)
 
 16. Yank (y(t)): The rate of change of moil with respect to time.
-y(t) = d(m(t))/dt = d^15(f(x))/(dx^15)
+y(t) = d(m(t))/(dt) = d^15(f(x))/((dx)^15)
 
 17. Snatch (sn(t)): The rate of change of yank with respect to time.
-sn(t) = d(y(t))/dt = d^16(f(x))/(dx^16)
+sn(t) = d(y(t))/(dt) = d^16(f(x))/((dx)^16)
 
 18. Shake (sh(t)): The rate of change of snatch with respect to time.
-sh(t) = d(sn(t))/dt = d^17(f(x))/(dx^17)
+sh(t) = d(sn(t))/(dt) = d^17(f(x))/((dx)^17)
 
 19. Quiver (q(t)): The rate of change of shake with respect to time.
-q(t) = d(sh(t))/dt = d^18(f(x))/(dx^18)
+q(t) = d(sh(t))/(dt) = d^18(f(x))/((dx)^18)
 
 20. Twitch (tw(t)): The rate of change of quiver with respect to time.
 
@@ -341,7 +341,7 @@ Step 1: Find the Velocity
 
 The velocity v(t) is the first derivative of the position function s(t):
 
-v(t) = d(s(t))/dt = (d/dt)(t^4 + 2t^3 + t^2 + 3t + 5)
+v(t) = d(s(t))/(dt) = (d/(dt))(t^4 + 2t^3 + t^2 + 3t + 5)
 
 v(t) = 4t^3 + 6t^2 + 2t + 3
 
@@ -349,7 +349,7 @@ Step 2: Find the Acceleration
 
 The acceleration a(t) is the second derivative of the position function s(t)s(t), or the first derivative of the velocity function v(t):
 
-a(t) = d(v(t))/dt = (d/dt)(4t^3 + 6t^2 + 2t + 3)
+a(t) = d(v(t))/(dt) = (d/(dt))(4t^3 + 6t^2 + 2t + 3)
 
 a(t) = 12t^2 + 12t + 2
 
@@ -357,7 +357,7 @@ Step 3: Find the Jerk
 
 The jerk j(t) is the third derivative of the position function s(t)s(t), or the first derivative of the acceleration function a(t):
 
-j(t) = d(a(t))/dt = (d/dt)(12t^2 + 12t + 2)
+j(t) = d(a(t))/(dt) = (d/(dt))(12t^2 + 12t + 2)
 
 j(t) = 24t + 12
 
@@ -395,33 +395,33 @@ Chain Rule and Other Essential Means for Computing Derivatives
 
 The chain rule is used to differentiate composite functions. If you have a function y = f(g(x)), where ff and gg are both differentiable, the chain rule states that:
 
-dy/dx = (df/dg) ⋅ (dg/dx)
+(dy)/(dx) = ((df)/(dg)) ⋅ ((dg)/(dx))
 
 Example:
 
 Let y = sin⁡(x^2). Here, f(u) = sin⁡(u) and g(x) = x^2.
 
-dy/dx = cos⁡(g(x)) ⋅ (dg/dx)
+(dy)/(dx) = cos⁡(g(x)) ⋅ ((dg)/(dx))
 
-dy/dx = cos⁡(x^2) ⋅ 2x
+(dy)/(dx) = cos⁡(x^2) ⋅ 2x
 
-dy/dx = 2xcos⁡(x^2)
+(dy)/(dx) = 2xcos⁡(x^2)
 
 2. Power Rule
 
 The power rule is used to differentiate functions of the form f(x) = x^n, where n is a real number.
 
-(d/dx)(x^n) = nx^(n−1)
+(d/(dx))(x^n) = nx^(n−1)
 
 Example:
 
-(d/dx)(x^3) = 3x^2
+(d/(dx))(x^3) = 3x^2
 
 3. Product Rule
 
 The product rule is used to differentiate the product of two functions. If y =u(x)v(x), then:
 
-(d/dx)[u(x)v(x)] = (u′(x))(v(x)) + (u(x))(v′(x))
+(d/(dx))[u(x)v(x)] = (u′(x))(v(x)) + (u(x))(v′(x))
 
 Example:
 
@@ -435,13 +435,13 @@ u′(x) = 2x
 
 v′(x) = cos⁡(x)
 
-(d/dx)[x^2sin⁡(x)] = 2xsin⁡(x) + (x^2)cos⁡(x)
+(d/(dx))[x^2sin⁡(x)] = 2xsin⁡(x) + (x^2)cos⁡(x)
 
 4. Quotient Rule
 
 The quotient rule is used to differentiate the quotient of two functions. If y = u(x)/v(x), then:
 
-(d/dx)[u(x)/v(x)] = [(u′(x)) (v(x)) − (u(x)) (v′(x))] / [v(x)]^2
+(d/(dx))[u(x)/v(x)] = [(u′(x)) (v(x)) − (u(x)) (v′(x))] / [v(x)]^2
 
 Example:
 
@@ -455,89 +455,89 @@ u′(x) = 2x
 
 v′(x) = cos⁡(x)
 
-(d/dx)[(x^2)/sin⁡(x)] = (2xsin⁡(x) − (x^2)cos⁡(x))/(sin⁡^2(x))
+(d/(dx))[(x^2)/sin⁡(x)] = (2xsin⁡(x) − (x^2)cos⁡(x))/(sin⁡^2(x))
 
 5. Sum and Difference Rules
 
 The sum and difference rules state that the derivative of the sum (or difference) of two functions is the sum (or difference) of their derivatives.
 
-(d/dx)[u(x) + v(x)] = u′(x) + v′(x)
+(d/(dx))[u(x) + v(x)] = u′(x) + v′(x)
 
-(d/dx)[u(x) − v(x)] = u′(x) − v′(x)
+(d/(dx))[u(x) − v(x)] = u′(x) − v′(x)
 
 Example:
 
 Let y = x^2 + sin⁡(x).
 
-(d/dx)[(x^2) + sin⁡(x)] = (d/dx)[x^2] + (d/dx)[sin⁡(x)]
+(d/(dx))[(x^2) + sin⁡(x)] = (d/(dx))[x^2] + (d/(dx))[sin⁡(x)]
 
-(d/dx)[(x^2) + sin⁡(x)] = 2^x + cos⁡(x)
+(d/(dx))[(x^2) + sin⁡(x)] = 2^x + cos⁡(x)
 
 6. Exponential and Logarithmic Rules
 
-– Exponential Rule: If y=exy=ex, then ddx(ex)=exdxd​(ex)=ex.
+– Exponential Rule: If y = ex, then (d/(dx))(ex) = ex.
 
-– General Exponential Rule: If y=axy=ax, then ddx(ax)=axln⁡(a)dxd​(ax)=axln(a).
+– General Exponential Rule: If y = ax, then (d/(dx))(ax) = axln⁡(a).
 
-– Logarithmic Rule: If y=ln⁡(x)y=ln(x), then ddx(ln⁡(x))=1xdxd​(ln(x))=x1​.
+– Logarithmic Rule: If y = ln⁡(x), then (d/(dx))(ln⁡(x)) = (1/x)​.
 
 Examples:
 
-(d/dx)(e^x) = e^x
+(d/(dx))(e^x) = e^x
 
-(d/dx)(2^x) = 2xln⁡(2)
+(d/(dx))(2^x) = 2xln⁡(2)
 
-(d/dx)(ln⁡(x)) = 1/x
+(d/(dx))(ln⁡(x)) = 1/x
 
 7. Trigonometric Functions
 
 – Sine and Cosine:
 
-(d/dx)(sin⁡(x)) = cos⁡(x)
+(d/(dx))(sin⁡(x)) = cos⁡(x)
 
-(d/dx)(cos⁡(x)) = −sin⁡(x)
+(d/(dx))(cos⁡(x)) = −sin⁡(x)
 
 Tangent:
 
-(d/dx)(tan⁡(x)) = sec⁡^2(x)
+(d/(dx))(tan⁡(x)) = sec⁡^2(x)
 
 Cotangent:
 
-(d/dx)(cot⁡(x)) = −csc⁡^2(x)
+(d/(dx))(cot⁡(x)) = −csc⁡^2(x)
 
 Secant:
 
-(d/dx)(sec⁡(x)) = sec⁡(x)tan⁡(x)
+(d/(dx))(sec⁡(x)) = sec⁡(x)tan⁡(x)
 
 Cosecant:
 
-(d/dx)(csc⁡(x)) = −csc⁡(x)cot⁡(x)
+(d/(dx))(csc⁡(x)) = −csc⁡(x)cot⁡(x)
 
 Examples:
 
-(d/dx)(sin⁡(x)) = cos⁡(x)
+(d/(dx))(sin⁡(x)) = cos⁡(x)
 
-(d/dx)(cos⁡(x)) = −sin⁡(x)
+(d/(dx))(cos⁡(x)) = −sin⁡(x)
 
 8. Inverse Trigonometric Functions
 
 Arcsine:
 
-(d/dx)(arcsin⁡(x)) = 1 / square_root(1 − x^2)
+(d/(dx))(arcsin⁡(x)) = 1 / square_root(1 − x^2)
 
 Arccosine:
 
-(d/dx)(arccos⁡(x)) = −1 square_root(1 − x^2)
+(d/(dx))(arccos⁡(x)) = −1 square_root(1 − x^2)
 
 Arctangent:
 
-(d/dx)(arctan⁡(x)) = 1 / (1 + x^2)
+(d/(dx))(arctan⁡(x)) = 1 / (1 + x^2)
 
 Examples:
 
-(d/dx)(arcsin⁡(x)) = 1 / square_root(1 − x^2)
+(d/(dx))(arcsin⁡(x)) = 1 / square_root(1 − x^2)
 
-(d/dx)(arctan⁡(x)) = 1 / (1 + x^2)
+(d/(dx))(arctan⁡(x)) = 1 / (1 + x^2)
 
 Summary
 
@@ -563,9 +563,9 @@ The velocity v(t) is the first derivative of the position function s(t).
 
 Using the power rule:
 
-(d/dx)(x^n) = nx^(n−1)
+(d/(dx))(x^n) = nx^(n−1)
 
-v(t) = d(s(t))/(dt) = (d/dt)(t^4 + 2t^3 + t^2 + 3t + 5)
+v(t) = d(s(t))/(dt) = (d/(dt))(t^4 + 2t^3 + t^2 + 3t + 5)
 
 v(t) = 4t^3 + 6t^2 + 2t + 3
 
@@ -575,7 +575,7 @@ The acceleration a(t) is the second derivative of the position function s(t), or
 
 Using the power rule again:
 
-a(t) = d(v(t))/(dt) = (d/dt)(4t^3 + 6t^2 + 2t + 3)
+a(t) = d(v(t))/(dt) = (d/(dt))(4t^3 + 6t^2 + 2t + 3)
 
 a(t) = 12t^2 + 12t +2
 
@@ -585,45 +585,45 @@ The jerk j(t) is the third derivative of the position function s(t), or the firs
 
 Using the power rule once more:
 
-j(t) = d(a(t))/(dt) = (d/dt)(12t^2 + 12t + 2)
+j(t) = d(a(t))/(dt) = (d/(dt))(12t^2 + 12t + 2)
 
 j(t) = 24t + 12
 
 Summary of Rules Used
 
-Power Rule: (d/dx)(x^n) = nx^(n−1)
+Power Rule: (d/(dx))(x^n) = nx^(n−1)
 
 The power rule was applied to each term of the polynomial function in each differentiation step. Here’s a recap:
 
 1. First Derivative (Velocity):
 
-(d/dt)(t^4) = 4t^3
+(d/(dt))(t^4) = 4t^3
 
-(d/dt)(2t^3) = 6t^2dtd
+(d/(dt))(2t^3) = 6t^2
 
-(d/dt)(t^2) = 2t
+(d/(dt))(t^2) = 2t
 
 (d/dt)(3t) = 3d
 
-(d/dt)(5) = 0
+(d/(dt))(5) = 0
 
 2. Second Derivative (Acceleration):
 
-(d/dt)(4t^3) = 12t^2
+(d/(dt))(4t^3) = 12t^2
 
-(d/dt)(6t^2) = 12t
+(d/(dt))(6t^2) = 12t
 
-(d/dt)(2t) = 2d
+(d/(dt))(2t) = 2d
 
-(d/dt)(3) = 0
+(d/(dt))(3) = 0
 
 3. Third Derivative (Jerk):
 
-(d/dt)(12t^2) = 24
+(d/(dt))(12t^2) = 24
 
-(d/dt)(12t) = 12
+(d/(dt))(12t) = 12
 
-(d/dt)(2) = 0
+(d/(dt))(2) = 0
 
 In conclusion, the example used the power rule to find the velocity, acceleration, and jerk from the given position function.
 
@@ -647,17 +647,17 @@ For a function f(x) = (x^2):
 
 First Derivative:
 
-(d/dx)(x^2) = 2x
+(d/(dx))(x^2) = 2x
 
-In plain-text: d(x^2)/dx = 2x
+In plain-text: d(x^2)/(dx) = 2x
 
 Second Derivative:
 
-(d^2)/(dx^2)(x2) = 2
+(d^2)/((dx)^2)(x2) = 2
 
 Clarification
 
-– d as an Operator: When you see d in the context of (df)/(dx), it signifies the derivative operation. Similarly, d^2 in (d^2f)/(dx^2) signifies the second derivative operation.
+– d as an Operator: When you see d in the context of (df)/(dx), it signifies the derivative operation. Similarly, d^2 in ((d^2)f)/((dx)^2) signifies the second derivative operation.
 
 – Not a Constant: Unlike constants such as numbers (e.g., 2, 3.14), d does not have a fixed numerical value. It is part of the notation for expressing derivatives.
 
@@ -671,11 +671,11 @@ s(t) = t^4 + 2t^3 + t^2 + 3t + 5
 
 Velocity
 
-v(t) = d(s(t))/dt = d(t^4 + 2t^3 + t^2 + 3t + 5)/(dt) = 4t^3 + 6t^2 + 2t + 3
+v(t) = d(s(t))/(dt) = d(t^4 + 2t^3 + t^2 + 3t + 5)/(dt) = 4t^3 + 6t^2 + 2t + 3
 
 Acceleration
 
-a(t) = d(v(t))/(dt) = (d/dt)(4t^3 + 6t^2 + 2t + 3) = 12t^2 +12t + 2
+a(t) = d(v(t))/(dt) = (d/(dt))(4t^3 + 6t^2 + 2t + 3) = 12t^2 +12t + 2
 
 Conclusion
 
