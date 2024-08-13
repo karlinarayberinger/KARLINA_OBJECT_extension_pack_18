@@ -1,12 +1,12 @@
 /**
- * file: karbytes_black_metal_playlist.txt
- * type: plain-text
- * date: 28_JULY_2024
- * author: karbytes
- * license: PUBLIC_DOMAIN
- */
+  * file: karbytes_black_metal_playlist.txt
+  * type: plain-text
+  * date: 13_AUGUST_2024
+  * author: karbytes
+  * license: PUBLIC_DOMAIN
+  */
 
-The following Uniform Resource Locators are each the web address of exactly one unique MP4 video file in karbytes' GitHub repositories (and encompassing collection of public domain and web based digital files referred to by karbytes as karbytes). What each of the following MP4 video files have in common is that they each depict exactly one unique song whose musical genre is black metal. 
+The following Uniform Resource Locators are each the web address of exactly one unique MP4 video file in karbytes’ GitHub repositories (and encompassing collection of public domain and web based digital files referred to by karbytes as karbytes). What each of the following MP4 video files have in common is that they each depict exactly one unique song whose musical genre is black metal.
 
 * * *
 
@@ -38,4 +38,8 @@ song_6: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_exte
 
 * * *
 
-song_7: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_10/main/eagle_of_the_serpent_sun_from_winds_of_serpentine_ascension_by_into_oblivion_downloaded_by_karbytes_on_11april2024.mp4
+song_7: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_18/main/the_sorrowful_screams_of_a_thousand_wicked_souls_elcrost_released_2021_downloaded_by_karbytes_on_13august2024.mp4
+
+* * *
+
+song_8: https://raw.githubusercontent.com/karlinarayberinger/KARLINA_OBJECT_extension_pack_10/main/eagle_of_the_serpent_sun_from_winds_of_serpentine_ascension_by_into_oblivion_downloaded_by_karbytes_on_11april2024.mp4 
