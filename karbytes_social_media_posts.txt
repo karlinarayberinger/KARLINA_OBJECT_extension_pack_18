@@ -1,7 +1,7 @@
 /**
  * file: karbytes_social_media_posts.txt
  * type: plain-text
- * date: 12_AUGUST_2024
+ * date: 13_AUGUST_2024
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -178,3 +178,9 @@ https://www.quantamagazine.org/the-geometric-tool-that-solved-einsteins-relativi
 On 12_AUGUST_2024 at approximately 10:00PM Pacific Standard Time, karbytes shared the following news article as a social media post on karbytes' Twitter dot Com page and on karbytes' Minds dot Com page:
 
 https://www.quantamagazine.org/physicists-pinpoint-the-quantum-origin-of-the-greenhouse-effect-20240807/
+
+* * *
+
+On 13_AUGUST_2024 at approximately 2:30PM Pacific Standard Time, karbytes shared the following news article as a social media post on karbytes' Twitter dot Com page and on karbytes' Minds dot Com page:
+
+https://www.popularmechanics.com/science/a61854962/quantum-entanglement-consciousness/
