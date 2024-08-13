@@ -1,0 +1,13 @@
+/**
+ * file: karbytes_12_august_2024.txt
+ * type: plain-text
+ * date: 12_AUGUST_2024
+ * author: karbytes
+ * license: PUBLIC_DOMAIN
+ */
+
+not_karbytes : “the stuff karbytes does not remember consciously bringing into existence” :: karbytes : “the stuff which karbytes consciously remembers bringing into existence in the form of public domain and web hosted digital files hosted on either Karlina Object dot WordPress dot Com or else on Karbytes For Life Blog dot WordPress dot Com or else on a public GitHub repository created by and exclusively owned by GitHub user @karlinarayberinger“.
+
+* * *
+
+// The purpose of karbytes’ life (according to karbytes) is to OPTIMIZE karbytes’ enjoyment of, creation of, proliferation of global copies and unique user experiences of, and preservation of KARBYTES intellectual property (which is hosted on the public World Wide Web and routinely saved to the WayBack Machine (and EACH WayBack Machine save of EACH digital file comprising that aforementioned collection of karbytes-originated and karbytes-licensed open source intellectual property represents a unique point in space, time, and computation associated with exactly one unique user experience of the respective ORIGINAL karbytes-originated file)).
