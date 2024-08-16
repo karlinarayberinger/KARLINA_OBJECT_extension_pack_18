@@ -1,3 +1,19 @@
+/**
+ * file: karbytes_16_august_2024.txt
+ * type: plain-text
+ * date: 16_AUGUST_2024
+ * author: karbytes
+ * license: PUBLIC_DOMAIN
+ */ 
+
+The following text was copy-pasted from a conversation which karbytes had with ChatGPT-4o (which is newer version of ChatGPT than is ChatGPT-4) between 15_AUGUST_2024 at approximately 3:00PM Pacific Standard Time and 16_AUGUST_2024 at approximately 3:00PM Pacific Standard Time.
+
+Note that, when karbytes copy-pasted the whole chat log of the aforementioned conversation with ChatGPT, ChatGPT inserted "You said:" in front of text which karbytes generated and ChatGPT inserted "ChatGPT said:" in front of text which ChatGPT generated. In the (modified) copy-pasted text in the section below this web page section, karbytes replaced each of the ChatGPT-generated labels "You said:" with "karbytes:" and each of the ChatGPT-generated labels "ChatGPT said:" with "ChatGPT:".
+
+Note also that, when karbytes copy-pasted the whole chat log of the aforementioned conversation with ChatGPT, ChatGPT preserved indentations in ChatGPT-generated responses but did not preserve numbers and bullet points prefacing list items in those responses. In the (modified) copy-pasted text in the section below this web page section, karbytes removed those indentations and manually inserted natural numbers identical to the original index numbers prefacing the ChatGPT-generated list items and karbytes manually inserted the dash character, "-", in front of list items which ChatGPT originally placed bullet points to the right of.
+
+* * *
+
 Which cities in the San Francisco Bay Area allow people to live in tents and motor homes
 ChatGPT said:
 ChatGPT
